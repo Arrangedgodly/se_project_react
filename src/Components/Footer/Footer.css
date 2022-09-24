@@ -1,0 +1,16 @@
+.footer {
+  position: absolute;
+  width: 1360px;
+  margin: auto;
+  bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__text {
+  margin-left: 40px;
+}
+
+.footer__text-alt {
+  margin-right: 24px;
+}

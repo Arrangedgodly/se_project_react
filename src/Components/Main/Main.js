@@ -1,10 +1,12 @@
 import './Main.css';
-import Header from '../Header/Header';
+import WeatherCard from '../WeatherCard/WeatherCard';
+
+/*ItemCard list */
 
 function Main() {
   return (
     <div className="main">
-      <Header />
+      <WeatherCard />
     </div>
   );
 }
