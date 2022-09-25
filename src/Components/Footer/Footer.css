@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../../CabinetGrotesk/Fonts/OTF/CabinetGrotesk-Medium.otf') format('opentype');
+}
+
 .footer {
   position: absolute;
   width: 1360px;
@@ -5,10 +10,7 @@
   bottom: 24px;
   display: flex;
   justify-content: space-between;
-}
-
-.footer__text {
-  margin-left: 40px;
+  font-family: 'Cabinet Grotesk';
 }
 
 .footer__text-alt {
