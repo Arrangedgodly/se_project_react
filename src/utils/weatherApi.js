@@ -14,6 +14,7 @@ let currentTemp = 0;
 api.getWeatherInfo()
   .then(data => {
     currentTemp = data.current.temp_f;
+    console.log(data);
   });
 
 export {currentTemp};

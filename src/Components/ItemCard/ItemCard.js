@@ -1,9 +1,12 @@
-import './ItemCard.js';
+import './card.css';
 
 function ItemCard(props) {
   return (
-    <li className='item-card' key={props._id}>
-      <h4 className='item-card__title'>{props.name}</h4>
+    <li className='card' key={props._id}>
+      <div className='card__title-wrapper'>
+        <h4 className='card__title'>{props.name}</h4>
+      </div>
+      <img src={props.image} className='card__image' />
     </li>
   );
 }

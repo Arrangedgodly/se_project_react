@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../../CabinetGrotesk/Fonts/OTF/CabinetGrotesk-Medium.otf') format('opentype');
+}
+
 html {
   background-color: #F3F3F3;
+  font-family: 'Cabinet Grotesk';
 }
 
 .App {
