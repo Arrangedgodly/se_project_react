@@ -1,10 +1,12 @@
 class Api {
-  constructor({baseUrl}) {
+  constructor({baseUrl, parsedLocation}) {
     this.baseUrl = baseUrl;
+    this.parsedLocation = parsedLocation;
   }
 
   getWeatherInfo() {
-    return fetch('${this.baseUrl}&q=${parsedLocation}&days=1')
+    return fetch(`${this.baseUrl}&q=${this.parsedLocation}&days=1`)
+      .then(res => res.json())
   }
 }
 

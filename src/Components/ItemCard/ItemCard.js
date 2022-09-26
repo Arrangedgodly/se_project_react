@@ -1,10 +1,10 @@
 import './ItemCard.js';
 
-function ItemCard() {
+function ItemCard(props) {
   return (
-    <div className='item-card'>
-      
-    </div>
+    <li className='item-card' key={props._id}>
+      <h4 className='item-card__title'>{props.name}</h4>
+    </li>
   );
 }
 

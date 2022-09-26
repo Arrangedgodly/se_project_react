@@ -1,10 +1,9 @@
 import './Header.css';
 import headerLogo from '../../logo.svg';
 import headerAvatar from '../../avatar.png';
+import {currentDate} from '../../utils/constants';
 
 function Header() {
-  const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-
   return (
     <div className="header">
       <img className="header__logo" src={headerLogo} alt="wtwr logo" />
