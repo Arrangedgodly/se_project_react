@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Main />
       <Footer />
-      <ModalWithForm />
+      <ModalWithForm title="New Garment" />
       <ItemModal />
     </div>
   );

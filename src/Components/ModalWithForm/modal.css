@@ -24,8 +24,20 @@
   font-family: 'Cabinet Grotesk';
 }
 
+.modal_hidden {
+  display: none;
+}
+
 .modal__close {
-  
+  background: url('../../images/close.svg');
+  width: 14px;
+  height: 14px;
+  background-position: center;
+  border-style: none;
+  position: fixed;
+  margin-left: 451px;
+  margin-top: 23px;
+  cursor: pointer;
 }
 
 .modal__header {

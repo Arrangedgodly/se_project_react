@@ -1,3 +1,7 @@
+html {
+  background-color: #F3F3F3;
+}
+
 .App {
   max-width: 1440px;
   margin: auto;
