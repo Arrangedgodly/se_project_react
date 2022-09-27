@@ -3,4 +3,5 @@
   width: 1360px;
   margin: auto;
   grid-template-columns: repeat(3, 1fr);
+  padding: 0;
 }

@@ -19,6 +19,10 @@ const defineTempType = (temperature) => {
   }
 }
 
+const defineWeatherType = (string) => {
+  
+}
+
 const filterAPIData = (data) => {
   const newData = {
     name: data.location.name,

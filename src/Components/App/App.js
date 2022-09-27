@@ -27,6 +27,7 @@ function App() {
   React.useEffect(() => {
     getWeatherInfo()
       .then(data => {
+        console.log(data);
         setWeatherData(filterAPIData(data))
       })
   }, []);

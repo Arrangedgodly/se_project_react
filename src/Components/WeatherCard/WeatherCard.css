@@ -24,14 +24,15 @@
   font-family: 'Cabinet Grotesk';
 }
 
-.weather-card__cloud {
+.weather-card__cloud_cloudy {
   margin-top: 10px;
-  position: relative;
+  position: absolute;
   z-index: 0;
+  margin-left: 1211px;
 }
 
 .weather-card__sun {
-  position: relative;
+  position: absolute;
   z-index: -1;
-  right: 26px;
+  right: 0;
 }

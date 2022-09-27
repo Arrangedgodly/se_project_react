@@ -3,8 +3,17 @@ import './cards.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ItemCard from '../ItemCard/ItemCard';
 
+function filterCards(card, data) {
+  if (card.weather === data.type) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 function Main({weatherData, cards}) {
-  const initialCards = cards;
+  const initialCards = cards.filter(item => filterCards(item, weatherData));
 
   return (
     <div className="main">
