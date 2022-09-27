@@ -1,16 +1,18 @@
 import './Header.css';
 import headerLogo from '../../logo.svg';
-import headerAvatar from '../../avatar.png';
-import {currentDate} from '../../utils/constants';
+import avatarDefault from '../../avatar.png';
 
-function Header() {
+function Header({weatherData, openModal}) {
+  const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
+  const username = 'Grady Wasil';
+
   return (
     <div className="header">
       <img className="header__logo" src={headerLogo} alt="wtwr logo" />
-      <h1 className="header__date">{currentDate}, Location</h1>
-      <button className="header__button">+ Add Clothes</button>
-      <h1 className="header__user">Grady Wasil</h1>
-      <img className="header__avatar" src={headerAvatar} alt="user avatar" />
+      <h1 className="header__date">{currentDate}, {weatherData.name}</h1>
+      <button onClick={openModal} className="header__button">+ Add Clothes</button>
+      <h1 className="header__user">{username}</h1>
+      <img className="header__avatar" src={avatarDefault} alt="user avatar" />
     </div>
   )
 }

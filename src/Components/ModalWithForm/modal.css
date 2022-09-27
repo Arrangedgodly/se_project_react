@@ -3,7 +3,7 @@
   src: url('../../CabinetGrotesk/Fonts/OTF/CabinetGrotesk-Medium.otf') format('opentype');
 }
 
-.modal-wrapper {
+.modal {
   background-color: rgba(0,0,0,0.3);
   width: 100vw;
   height: 100vh;
@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.modal {
+.modal-container {
   width: 496px;
   height: 436px;
   border-radius: 20px;

@@ -1,5 +1,4 @@
 const apiKey = "06ac1279ecb14d84aa401432222609";
-const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
 const location = {
   latitude: "39.739235",
   longitude: "-104.990250"
@@ -47,7 +46,6 @@ const defaultClothingItems = [
 
 export {
   apiKey,
-  currentDate,
   parsedLocation,
   defaultClothingItems
 }

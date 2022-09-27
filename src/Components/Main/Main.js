@@ -3,17 +3,18 @@ import './cards.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import {defaultClothingItems} from '../../utils/constants';
 import ItemCard from '../ItemCard/ItemCard';
-import {currentTemp} from '../../utils/weatherApi';
 
-function Main() {
-  const itemCards = defaultClothingItems.map((item) => {
-    <ItemCard props={item} />
-  });
+function Main({weatherData}) {
+
 
   return (
     <div className="main">
-      <WeatherCard />
-      <h3 className='cards__header'>Today is: {currentTemp}°F / You may want to wear:</h3>
+      <WeatherCard
+        weatherData={weatherData}
+      />
+      <h3 className='cards__header'>
+        Today is: {weatherData.temp}°F / You may want to wear:
+      </h3>
       <ul className='cards'>
         {
           defaultClothingItems.map((item) => (
