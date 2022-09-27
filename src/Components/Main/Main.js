@@ -1,11 +1,10 @@
 import './Main.css';
 import './cards.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
-import {defaultClothingItems} from '../../utils/constants';
 import ItemCard from '../ItemCard/ItemCard';
 
-function Main({weatherData}) {
-
+function Main({weatherData, cards}) {
+  const initialCards = cards;
 
   return (
     <div className="main">
@@ -17,11 +16,12 @@ function Main({weatherData}) {
       </h3>
       <ul className='cards'>
         {
-          defaultClothingItems.map((item) => (
+          initialCards.map((item) => (
             <ItemCard
               key={item._id}
               name={item.name}
               image={item.link}
+              weather={item.weather}
             />
           )
           )

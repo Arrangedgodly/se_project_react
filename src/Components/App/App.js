@@ -6,16 +6,33 @@ import Footer from '../Footer/Footer';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
 import {getWeatherInfo, filterAPIData} from '../../utils/weatherApi';
+import { defaultClothingItems } from '../../utils/constants';
 
 function App() {
   /*const weatherData = getWeatherInfo().then(data => filterAPIData(data));*/
   const [weatherData, setWeatherData] = React.useState({});
+  const [clothingItems, setClothingItems] = React.useState([]);
+  const [activeModal, setActiveModal] = React.useState();
+  const [selectedCard, setSelectedCard] = React.useState(null);
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    setActiveModal('preview');
+  }
+
+  const closeAllModals = () => {
+    setActiveModal();
+  }
 
   React.useEffect(() => {
     getWeatherInfo()
       .then(data => {
         setWeatherData(filterAPIData(data))
       })
+  }, []);
+
+  React.useEffect(() => {
+    setClothingItems(defaultClothingItems)
   }, []);
 
   return (
@@ -29,6 +46,7 @@ function App() {
       />
       <Main
         weatherData={weatherData}
+        cards={clothingItems}
       />
       <Footer />
       <ModalWithForm 
