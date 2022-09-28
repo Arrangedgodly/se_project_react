@@ -26,14 +26,24 @@ function App() {
   React.useEffect(() => {
     getWeatherInfo()
       .then(data => {
-        console.log(data);
         setWeatherData(filterAPIData(data))
       })
+      .catch(err => console.log(err));
   }, []);
 
   React.useEffect(() => {
     setClothingItems(defaultClothingItems)
   }, []);
+
+  React.useEffect(() => {
+    const close = (e) => {
+      if (e.keyCode === 27){
+        closeAllModals();
+      }
+    }
+    window.addEventListener('keydown', close);
+    return () => {window.removeEventListener('keydown', close)}
+  }, [])
 
   return (
     <div className="App">
@@ -59,7 +69,27 @@ function App() {
         onClose={() => {
           closeAllModals();
         }}
-        />
+        >
+          <h4 className='form__label'>Name</h4>
+          <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
+          <span className='form__error' id='name-error'></span>
+          <h4 className='form__label'>Image</h4>
+          <input name='image' className='form__input form__input_type_image' type='url' placeholder='Image URL' required />
+          <span className='form__error' id='image-error'></span>
+          <h4 className='form__label'>Select the weather type:</h4>
+          <div className='form__radio'>
+          <label className='form__label-radio'>
+            <input name='temp' className='form__input-radio' value='Hot' type='radio' />
+            Hot
+          </label>
+          <label className='form__label-radio'>
+          <input name='temp' className='form__input-radio' value='Warm' type='radio' />Warm
+          </label>
+          <label className='form__label-radio'>
+          <input name='temp' className='form__input-radio' value='Cold' type='radio' />Cold
+          </label>
+          </div>
+        </ModalWithForm>
       )}
       {activeModal === 'preview' && (
         <ItemModal

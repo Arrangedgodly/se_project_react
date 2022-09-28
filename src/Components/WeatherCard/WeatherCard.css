@@ -28,21 +28,9 @@
   font-family: 'Cabinet Grotesk';
 }
 
-.weather-card__cloud {
+.weather-card__image {
   object-fit: contain;
-}
-
-.weather-card__cloud_cloudy {
-  margin-top: 10px;
   position: absolute;
-  z-index: 0;
-  margin-left: 1211px;
-}
-
-.weather-card__sun {
-  fill: #FFF8BA;
-  position: absolute;
-  z-index: -1;
-  right: 0;
-  object-fit: contain;
+  left: 0;
+  border-radius: 0 12px 12px 0;
 }
