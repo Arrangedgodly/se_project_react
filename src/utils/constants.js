@@ -10,13 +10,13 @@ const defaultClothingItems = [
     _id: 0,
     name: "Cap",
     weather: "hot",
-    link: "https://img.hatshopping.com/Liberty-Baseball-Cap.32874_pf2.jpg",
+    link: "https://images.unsplash.com/photo-1521369909029-2afed882baee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
   },
   {
     _id: 1,
     name: "Hoodie",
     weather: "warm",
-    link: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1627492161-filson-prospector-hoodie-blue-1627491769.jpg",
+    link: "https://images.unsplash.com/photo-1579572331145-5e53b299c64e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=680&q=80",
   },
   {
     _id: 2,

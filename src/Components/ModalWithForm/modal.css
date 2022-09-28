@@ -52,7 +52,8 @@
 .modal__image {
   width: 498px;
   height: 498px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .modal__title {

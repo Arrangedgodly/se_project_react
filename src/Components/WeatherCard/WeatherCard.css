@@ -15,6 +15,10 @@
   z-index: -2;
 }
 
+.weather-card_night {
+  background-color: #286897;
+}
+
 .weather-card__temp {
   font-size: 36px;
   line-height: 40px;
@@ -36,6 +40,7 @@
 }
 
 .weather-card__sun {
+  fill: #FFF8BA;
   position: absolute;
   z-index: -1;
   right: 0;
