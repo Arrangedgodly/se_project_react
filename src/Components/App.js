@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
-import Main from "../Main/Main";
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import ModalWithForm from '../ModalWithForm/ModalWithForm';
-import ItemModal from '../ItemModal/ItemModal';
-import {getWeatherInfo, filterAPIData} from '../../utils/weatherApi';
-import { defaultClothingItems } from '../../utils/constants';
+import '../Blocks/App.css';
+import Main from "./Main";
+import Header from './Header';
+import Footer from './Footer';
+import ModalWithForm from './ModalWithForm';
+import ItemModal from './ItemModal';
+import {getWeatherInfo, filterAPIData} from '../utils/weatherApi';
+import { defaultClothingItems } from '../utils/constants';
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
@@ -72,7 +72,7 @@ function App() {
         >
           <h4 className='form__label'>Name</h4>
           <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
-          <span className='form__error' id='name-error'></span>
+          <span className='form__error' id='name-error'>Test Error</span>
           <h4 className='form__label'>Image</h4>
           <input name='image' className='form__input form__input_type_image' type='url' placeholder='Image URL' required />
           <span className='form__error' id='image-error'></span>

@@ -1,4 +1,4 @@
-import Api from '../Components/Api/Api';
+import Api from '../Components/Api';
 import {
   apiKey,
   parsedLocation

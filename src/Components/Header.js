@@ -1,6 +1,6 @@
-import './Header.css';
-import headerLogo from '../../logo.svg';
-import avatarDefault from '../../avatar.png';
+import '../Blocks/Header.css';
+import headerLogo from '../images/logo.svg';
+import avatarDefault from '../images/avatar.png';
 
 function Header({weatherData, openModal}) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });

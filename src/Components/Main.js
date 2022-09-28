@@ -1,7 +1,7 @@
-import './Main.css';
-import './cards.css';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import ItemCard from '../ItemCard/ItemCard';
+import '../Blocks/Main.css';
+import '../Blocks/cards.css';
+import WeatherCard from './WeatherCard';
+import ItemCard from './ItemCard';
 
 function filterCards(card, data) {
   if (card.weather === data.type) {

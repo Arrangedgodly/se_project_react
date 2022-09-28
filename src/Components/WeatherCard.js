@@ -1,16 +1,16 @@
-import './WeatherCard.css';
-import daySunny from '../../images/day-sunny.svg';
-import dayCloudy from '../../images/day-cloudy.svg';
-import dayRain from '../../images/day-rain.svg';
-import dayFog from '../../images/day-fog.svg';
-import daySnow from '../../images/day-snow.svg';
-import dayStorm from '../../images/day-storm.svg';
-import nightSunny from '../../images/night-sunny.svg';
-import nightCloudy from '../../images/night-cloudy.svg';
-import nightRain from '../../images/night-rain.svg';
-import nightFog from '../../images/night-fog.svg';
-import nightSnow from '../../images/night-snow.svg';
-import nightStorm from '../../images/night-storm.svg';
+import '../Blocks/WeatherCard.css';
+import daySunny from '../images/day-sunny.svg';
+import dayCloudy from '../images/day-cloudy.svg';
+import dayRain from '../images/day-rain.svg';
+import dayFog from '../images/day-fog.svg';
+import daySnow from '../images/day-snow.svg';
+import dayStorm from '../images/day-storm.svg';
+import nightSunny from '../images/night-sunny.svg';
+import nightCloudy from '../images/night-cloudy.svg';
+import nightRain from '../images/night-rain.svg';
+import nightFog from '../images/night-fog.svg';
+import nightSnow from '../images/night-snow.svg';
+import nightStorm from '../images/night-storm.svg';
 
 import {
   checkSunny,
@@ -19,7 +19,7 @@ import {
   checkFog,
   checkSnow,
   checkStorm
-} from '../../utils/weatherApi';
+} from '../utils/weatherApi';
 
 function checkTime() {
   const today = new Date();

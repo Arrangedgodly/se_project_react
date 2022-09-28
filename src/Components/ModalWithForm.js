@@ -1,5 +1,5 @@
-import './modal.css';
-import './form.css';
+import '../Blocks/modal.css';
+import '../Blocks/form.css';
 
 function ModalWithForm(props) {
   return (
