@@ -24,6 +24,10 @@
   font-family: 'Cabinet Grotesk';
 }
 
+.weather-card__cloud {
+  object-fit: contain;
+}
+
 .weather-card__cloud_cloudy {
   margin-top: 10px;
   position: absolute;
@@ -35,4 +39,5 @@
   position: absolute;
   z-index: -1;
   right: 0;
+  object-fit: contain;
 }

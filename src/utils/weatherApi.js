@@ -10,9 +10,9 @@ const api = new Api({
 });
 
 const defineTempType = (temperature) => {
-  if (temperature >= 86) {
+  if (temperature >= 76) {
     return 'hot';
-  } else if (temperature >= 66 && temperature <= 85) {
+  } else if (temperature >= 66 && temperature <= 75) {
     return 'warm';
   } else if (temperature <= 65) {
     return 'cold';

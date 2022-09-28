@@ -12,7 +12,7 @@ function filterCards(card, data) {
   }
 }
 
-function Main({weatherData, cards}) {
+function Main({weatherData, cards, handleCardClick}) {
   const initialCards = cards.filter(item => filterCards(item, weatherData));
 
   return (
@@ -31,6 +31,9 @@ function Main({weatherData, cards}) {
               name={item.name}
               image={item.link}
               weather={item.weather}
+              handleCardClick={() => {
+                handleCardClick(item)
+              }}
             />
           )
           )

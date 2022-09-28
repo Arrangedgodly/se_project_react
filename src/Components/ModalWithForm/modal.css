@@ -8,6 +8,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   display: flex;
@@ -22,10 +23,12 @@
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.3);
   font-family: 'Cabinet Grotesk';
+  position: relative;
 }
 
-.modal_hidden {
-  display: none;
+.modal-container-alt {
+  width: 498px;
+  height: 610px;
 }
 
 .modal__close {
@@ -34,9 +37,9 @@
   height: 14px;
   background-position: center;
   border-style: none;
-  position: fixed;
-  margin-left: 451px;
-  margin-top: 23px;
+  position: absolute;
+  left: 451px;
+  top: 23px;
   cursor: pointer;
 }
 
@@ -44,4 +47,18 @@
   font-size: 16px;
   margin-left: 28px;
   margin-top: 28px;
+}
+
+.modal__image {
+  width: 498px;
+  height: 498px;
+  object-fit: contain;
+}
+
+.modal__title {
+  margin: 32px auto 12px 32px;
+}
+
+.modal__desc {
+  margin: 0 auto 32px 32px;
 }

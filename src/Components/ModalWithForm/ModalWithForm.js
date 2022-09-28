@@ -3,7 +3,7 @@ import './form.css';
 
 function ModalWithForm({title, name, buttonText, onClose}) {
   return (
-    <div className={`modal modal_hidden modal_type_${name}`} >
+    <div className={`modal modal_type_${name}`} >
       <div className='modal-container'>
         <button onClick={onClose}type='button' className='modal__close'></button>
         <h3 className='modal__header'>{title}</h3>

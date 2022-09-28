@@ -9,7 +9,6 @@ import {getWeatherInfo, filterAPIData} from '../../utils/weatherApi';
 import { defaultClothingItems } from '../../utils/constants';
 
 function App() {
-  /*const weatherData = getWeatherInfo().then(data => filterAPIData(data));*/
   const [weatherData, setWeatherData] = React.useState({});
   const [clothingItems, setClothingItems] = React.useState([]);
   const [activeModal, setActiveModal] = React.useState();
@@ -41,25 +40,35 @@ function App() {
       <Header
         weatherData={weatherData}
         openModal={() => {
-          const modal = document.querySelector('.modal_type_create');
-          modal.classList.remove('modal_hidden');
+          setActiveModal('create');
         }}
       />
       <Main
         weatherData={weatherData}
         cards={clothingItems}
+        handleCardClick={(data) => {
+          handleCardClick(data);
+        }}
       />
       <Footer />
-      <ModalWithForm 
+      {activeModal === 'create' && (
+        <ModalWithForm 
         title="New Garment"
         name='create'
         buttonText='Add garment'
         onClose={() => {
-          const modal = document.querySelector('.modal_type_create');
-          modal.classList.add('modal_hidden');
+          closeAllModals();
         }}
         />
-      <ItemModal />
+      )}
+      {activeModal === 'preview' && (
+        <ItemModal
+        card={selectedCard}
+        onClose={() => {
+          closeAllModals();
+        }}
+      />
+      )}
     </div>
   );
 }

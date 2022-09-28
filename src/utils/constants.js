@@ -10,37 +10,37 @@ const defaultClothingItems = [
     _id: 0,
     name: "Cap",
     weather: "hot",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/cap.jpg?etag=cf33d6ac81f0613c13a5c403fc7c62da",
+    link: "https://img.hatshopping.com/Liberty-Baseball-Cap.32874_pf2.jpg",
   },
   {
     _id: 1,
     name: "Hoodie",
     weather: "warm",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/hoodie.jpg?etag=1f3d3c1a154f7a9e07bd78a8f6952d9e",
+    link: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1627492161-filson-prospector-hoodie-blue-1627491769.jpg",
   },
   {
     _id: 2,
     name: "Jacket",
     weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/jacket.jpg?etag=e2e17fc1352115d2e59511b380fccae9",
+    link: "https://www.rei.com/media/product/192845",
   },
   {
     _id: 3,
     name: "Sneakers",
     weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/sneakers.jpg?etag=56322fb0e0f745439c1d344c253c6855",
+    link: "https://assets.hermes.com/is/image/hermesproduct/expert-sneaker--221896ZH92-worn-1-0-0-1000-1000_b.jpg",
   },
   {
     _id: 4,
     name: "T-Shirt",
     weather: "hot",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/t-shirt.jpg?etag=0f94f1c569bd19d95860902fcc5c70b3",
+    link: "https://www.pennlive.com/resizer/e7o66Pu6YAzxTOA7AARGt_L4hic=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/XBUH6UFAPVDTLCPAG6HBZUFQE4.jpg",
   },
   {
     _id: 5,
     name: "Winter coat",
     weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/winter-coat.jpg?etag=2a959245bf5291c50cdbd4fcefb25a21",
+    link: "https://m.media-amazon.com/images/I/71XqHAMkmiL._AC_UX342_.jpg",
   }
 ];
 

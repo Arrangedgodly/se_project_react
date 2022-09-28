@@ -6,7 +6,7 @@ function ItemCard(props) {
       <div className='card__title-wrapper'>
         <h4 className='card__title'>{props.name}</h4>
       </div>
-      <img src={props.image} className='card__image' />
+      <img src={props.image} onClick={props.handleCardClick} className='card__image' />
     </li>
   );
 }
