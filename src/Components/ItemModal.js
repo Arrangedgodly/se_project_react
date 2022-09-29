@@ -1,4 +1,4 @@
-import '../blocks/ItemModal.css';
+import '../blocks/itemModal.css';
 import '../blocks/modal.css';
 
 function ItemModal({card, onClose}) {

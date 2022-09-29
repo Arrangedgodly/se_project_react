@@ -1,4 +1,4 @@
-import '../blocks/Header.css';
+import '../blocks/header.css';
 import headerLogo from '../images/logo.svg';
 import avatarDefault from '../images/avatar.png';
 
