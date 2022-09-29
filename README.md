@@ -7,7 +7,7 @@ WTWR is a webpage that detects the local weather for your area and recommends 'W
 WTWR is my first major project utilizing **React**. It features **RESTful API calls** to weatherapi.com, and utilizes ternary operators/conditional rendering to display the correct content based on the users conditons.
 
 ## Link to Project
-This project can be found at [title](link)
+This project can be found at [this link](https://arrangedgodly.com/se_project_react/)
 
 ## Version Tracker
 - 1.0

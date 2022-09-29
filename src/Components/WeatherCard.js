@@ -24,7 +24,7 @@ import {
 function checkTime() {
   const today = new Date();
   const time = today.getHours();
-  if ((time > 0 && time < 7) || (time > 19)) {
+  if ((time > 0 && time < 7) || (time >= 19)) {
     return false;
   } else {
     return true;
