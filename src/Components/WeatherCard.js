@@ -1,4 +1,4 @@
-import '../Blocks/WeatherCard.css';
+import '../blocks/WeatherCard.css';
 import daySunny from '../images/day-sunny.svg';
 import dayCloudy from '../images/day-cloudy.svg';
 import dayRain from '../images/day-rain.svg';

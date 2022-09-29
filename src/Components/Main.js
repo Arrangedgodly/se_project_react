@@ -1,5 +1,5 @@
-import '../Blocks/Main.css';
-import '../Blocks/cards.css';
+import '../blocks/Main.css';
+import '../blocks/cards.css';
 import WeatherCard from './WeatherCard';
 import ItemCard from './ItemCard';
 

@@ -1,4 +1,4 @@
-import '../Blocks/card.css';
+import '../blocks/card.css';
 
 function ItemCard(props) {
   return (

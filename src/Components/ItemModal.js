@@ -1,5 +1,5 @@
-import '../Blocks/ItemModal.css';
-import '../Blocks/modal.css';
+import '../blocks/ItemModal.css';
+import '../blocks/modal.css';
 
 function ItemModal({card, onClose}) {
   return (
