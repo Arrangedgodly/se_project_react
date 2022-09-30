@@ -6,7 +6,7 @@ import Footer from './Footer';
 import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import {getWeatherInfo, filterAPIData} from '../utils/weatherApi';
-import { defaultClothingItems } from '../utils/constants';
+import { defaultClothingItems, apiKey, parsedLocation } from '../utils/constants';
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
@@ -24,7 +24,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    getWeatherInfo()
+    getWeatherInfo(apiKey, parsedLocation)
       .then(data => {
         setWeatherData(filterAPIData(data))
       })

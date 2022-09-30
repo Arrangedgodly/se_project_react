@@ -1,14 +1,3 @@
-import Api from '../components/Api';
-import {
-  apiKey,
-  parsedLocation
-} from './constants';
-
-const api = new Api({
-  baseUrl: `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}`,
-  parsedLocation: parsedLocation
-});
-
 const defineTempType = (temperature) => {
   if (temperature >= 76) {
     return 'hot';
@@ -50,8 +39,9 @@ const filterAPIData = (data) => {
   return newData;
 }
 
-const getWeatherInfo = () => {
-  return api.getWeatherInfo();
+const getWeatherInfo = (apiKey, parsedLocation) => {
+  return fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${parsedLocation}&days=1`)
+          .then(res => res.json())
 }
 
 export function checkSunny(string) {
