@@ -11,7 +11,7 @@ import { defaultClothingItems, apiKey, parsedLocation, filterAPIData } from '../
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
   const [clothingItems, setClothingItems] = React.useState([]);
-  const [activeModal, setActiveModal] = React.useState();
+  const [activeModal, setActiveModal] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(null);
 
   const handleCardClick = (card) => {
@@ -36,13 +36,13 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === 27){
+    const handleEscKey = (e) => {
+      if (e.key === 'Escape'){
         closeAllModals();
       }
     }
-    window.addEventListener('keydown', close);
-    return () => {window.removeEventListener('keydown', close)}
+    window.addEventListener('keydown', handleEscKey);
+    return () => {window.removeEventListener('keydown', handleEscKey)}
   }, [])
 
   return (
@@ -56,19 +56,16 @@ function App() {
       <Main
         weatherData={weatherData}
         cards={clothingItems}
-        handleCardClick={(data) => {
-          handleCardClick(data);
-        }}
+        handleCardClick={handleCardClick}
       />
       <Footer />
       {activeModal === 'create' && (
-        <ModalWithForm 
+        <ModalWithForm
+        isOpen={activeModal === 'create'}
         title="New Garment"
         name='create'
         buttonText='Add garment'
-        onClose={() => {
-          closeAllModals();
-        }}
+        onClose={closeAllModals}
         >
           <h4 className='form__label'>Name</h4>
           <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
@@ -94,9 +91,7 @@ function App() {
       {activeModal === 'preview' && (
         <ItemModal
         card={selectedCard}
-        onClose={() => {
-          closeAllModals();
-        }}
+        onClose={closeAllModals}
       />
       )}
     </div>

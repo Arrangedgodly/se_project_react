@@ -9,9 +9,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
-.modal-container {
+.modal_hidden {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.modal__container {
   width: 496px;
   height: 436px;
   border-radius: 20px;
@@ -20,7 +27,7 @@
   position: relative;
 }
 
-.modal-container-alt {
+.modal__container-alt {
   width: 498px;
   height: 610px;
 }

@@ -31,27 +31,19 @@ function WeatherCard({weatherData}) {
   const isSnowy = checkSnow(weatherData.card);
   const isStormy = checkStorm(weatherData.card);
 
+  const wrapperStyles = time ? 'weather-card' : 'weather-card weather-card_night';
+  const image = isSunny ? (time ? daySunny : nightSunny)
+                  : isCloudy ? (time ? dayCloudy : nightCloudy)
+                  : isRainy ? (time ? dayRain : nightRain)
+                  : isFoggy ? (time ? dayFog : nightFog)
+                  : isSnowy ? (time ? daySnow : nightSnow)
+                  : isStormy ? (time ? dayStorm : nightStorm)
+                  : 'error';
+
   return (
-    <div className={time ? 'weather-card' : 'weather-card weather-card_night'}>
+    <div className={wrapperStyles}>
       <p className='weather-card__temp'>{weatherData.temp}°F</p>
-      {isSunny && (
-        <img src={time ? daySunny : nightSunny} className='weather-card__image' />
-      )}
-      {isCloudy && (
-        <img src={time ? dayCloudy : nightCloudy} className='weather-card__image' />
-      )}
-      {isRainy && (
-        <img src={time ? dayRain : nightRain} className='weather-card__image' />
-      )}
-      {isFoggy && (
-        <img src={time ? dayFog : nightFog} className='weather-card__image' />
-      )}
-      {isSnowy && (
-        <img src={time ? daySnow : nightSnow} className='weather-card__image' />
-      )}
-      {isStormy && (
-        <img src={time ? dayStorm : nightStorm} className='weather-card__image' />
-      )}
+      <img src={image} className='weather-card__image' alt={`Graphic of ${weatherData.card} weather`} />
     </div>
   );
 }
