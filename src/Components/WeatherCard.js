@@ -18,18 +18,9 @@ import {
   checkRain,
   checkFog,
   checkSnow,
-  checkStorm
-} from '../utils/weatherApi';
-
-function checkTime() {
-  const today = new Date();
-  const time = today.getHours();
-  if ((time > 0 && time < 7) || (time >= 19)) {
-    return false;
-  } else {
-    return true;
-  }
-}
+  checkStorm,
+  checkTime
+} from '../utils/constants';
 
 function WeatherCard({weatherData}) {
   const time = checkTime();
