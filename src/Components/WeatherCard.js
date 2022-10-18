@@ -1,4 +1,5 @@
 import '../blocks/weatherCard.css';
+import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import daySunny from '../images/day-sunny.svg';
 import dayCloudy from '../images/day-cloudy.svg';
 import dayRain from '../images/day-rain.svg';
@@ -42,7 +43,7 @@ function WeatherCard({weatherData}) {
 
   return (
     <div className={wrapperStyles}>
-      <p className='weather-card__temp'>{weatherData.temp}°F</p>
+      <p className='weather-card__temp'>{weatherData.temp[currentTemperatureUnit]}</p>
       <img src={image} className='weather-card__image' alt={`Graphic of ${weatherData.card} weather`} />
     </div>
   );

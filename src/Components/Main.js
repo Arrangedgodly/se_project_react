@@ -21,7 +21,7 @@ function Main({weatherData, cards, handleCardClick}) {
         weatherData={weatherData}
       />
       <h3 className='cards__header'>
-        Today is: {weatherData.temp}°F / You may want to wear:
+        Today is: {weatherData.temp} / You may want to wear:
       </h3>
       <ul className='cards'>
         {

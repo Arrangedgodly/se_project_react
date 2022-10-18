@@ -1,4 +1,4 @@
-const apiKey = "06ac1279ecb14d84aa401432222609";
+const apiKey = "2e909ff283a54d93b83211750221810";
 const location = {
   latitude: "39.739235",
   longitude: "-104.990250"
@@ -123,7 +123,8 @@ const defineWeatherType = (string) => {
 export const filterAPIData = (data) => {
   const newData = {
     name: data.location.name,
-    temp: data.current.temp_f,
+    tempF: `${Math.round(data.current.temp_f)}°F`,
+    tempC: `${Math.round((data.current.temp_f - 32) * 5/9)}°C`,
     type: defineTempType(data.current.temp_f),
     card: defineWeatherType(data.current.condition.text)
   };

@@ -7,12 +7,14 @@ import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { defaultClothingItems, apiKey, parsedLocation, filterAPIData } from '../utils/constants';
+import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
   const [clothingItems, setClothingItems] = React.useState([]);
   const [activeModal, setActiveModal] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -21,6 +23,12 @@ function App() {
 
   const closeAllModals = () => {
     setActiveModal();
+  }
+
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === 'F'
+    ? setCurrentTemperatureUnit('C')
+    : setCurrentTemperatureUnit('F');
   }
 
   React.useEffect(() => {
@@ -47,6 +55,9 @@ function App() {
 
   return (
     <div className="App">
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
       <Header
         weatherData={weatherData}
         openModal={() => {
@@ -94,6 +105,7 @@ function App() {
         onClose={closeAllModals}
       />
       )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
