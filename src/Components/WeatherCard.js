@@ -1,4 +1,5 @@
 import '../blocks/weatherCard.css';
+import React from 'react';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import daySunny from '../images/day-sunny.svg';
 import dayCloudy from '../images/day-cloudy.svg';
@@ -24,6 +25,7 @@ import {
 } from '../utils/constants';
 
 function WeatherCard({weatherData}) {
+  const context = React.useContext(CurrentTemperatureUnitContext);
   const time = checkTime();
   const isSunny = checkSunny(weatherData.card);
   const isCloudy = checkCloudy(weatherData.card);
@@ -43,10 +45,12 @@ function WeatherCard({weatherData}) {
 
   return (
     <div className={wrapperStyles}>
-      <p className='weather-card__temp'>{weatherData.temp[currentTemperatureUnit]}</p>
+      <p className='weather-card__temp'></p>
       <img src={image} className='weather-card__image' alt={`Graphic of ${weatherData.card} weather`} />
     </div>
   );
 }
 
 export default WeatherCard;
+
+/* {`${weatherData.temperature[context.currentTemperatureUnit]}`} */

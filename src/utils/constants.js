@@ -123,8 +123,10 @@ const defineWeatherType = (string) => {
 export const filterAPIData = (data) => {
   const newData = {
     name: data.location.name,
-    tempF: `${Math.round(data.current.temp_f)}°F`,
-    tempC: `${Math.round((data.current.temp_f - 32) * 5/9)}°C`,
+    temperature: {
+      F: `${Math.round(data.current.temp_f)}°F`,
+      C: `${Math.round((data.current.temp_f - 32) * 5/9)}°C`
+    },
     type: defineTempType(data.current.temp_f),
     card: defineWeatherType(data.current.condition.text)
   };

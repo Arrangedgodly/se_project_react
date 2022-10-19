@@ -2,7 +2,7 @@ import React from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
 function ToggleSwitch(props) {
-  const currentTemperatureUnit = React.useContext(CurrentTemperatureUnitContext);
+  const context = React.useContext(CurrentTemperatureUnitContext);
 
   return (
     <>
@@ -10,7 +10,10 @@ function ToggleSwitch(props) {
         className="header__switch"
         type="checkbox"
         checked={props.isChecked}
-        onChange={props.handleClick}
+        onChange={() => {
+          props.handleClick();
+          context.handleToggleSwitchChange();
+        }}
         id={`header__switch-new`}
     />
     <label
