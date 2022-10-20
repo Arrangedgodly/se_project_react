@@ -2,7 +2,7 @@ import React from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
 function ToggleSwitch(props) {
-  const context = React.useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit, handleToggleSwitchChange } = React.useContext(CurrentTemperatureUnitContext);
 
   return (
     <>
@@ -10,9 +10,10 @@ function ToggleSwitch(props) {
         className="header__switch"
         type="checkbox"
         checked={props.isChecked}
+        value={currentTemperatureUnit}
         onChange={() => {
           props.handleClick();
-          context.handleToggleSwitchChange();
+          handleToggleSwitchChange();
         }}
         id={`header__switch-new`}
     />
@@ -22,8 +23,8 @@ function ToggleSwitch(props) {
     >
       <span className={`header__switch-button`} />
       <div className="header__switch-labels">
-        <span className={props.isChecked && 'header__switch-label-alt'}>F</span>
-        <span className={!props.isChecked && 'header__switch-label-alt'}>C</span>
+        <span className={props.isChecked ? 'header__switch-label-alt' : undefined}>F</span>
+        <span className={!props.isChecked ? 'header__switch-label-alt' : undefined}>C</span>
       </div>
     </label>
     </>

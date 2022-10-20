@@ -1,6 +1,7 @@
 import React from 'react';
 import '../blocks/app.css';
 import Main from "./Main";
+import Profile from './Profile';
 import Header from './Header';
 import Footer from './Footer';
 import ModalWithForm from './ModalWithForm';
@@ -8,6 +9,7 @@ import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { defaultClothingItems, apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
@@ -58,53 +60,61 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-      <Header
-        weatherData={weatherData}
-        openModal={() => {
-          setActiveModal('create');
-        }}
-      />
-      <Main
-        weatherData={weatherData}
-        cards={clothingItems}
-        handleCardClick={handleCardClick}
-      />
-      <Footer />
-      {activeModal === 'create' && (
-        <ModalWithForm
-        isOpen={activeModal === 'create'}
-        title="New Garment"
-        name='create'
-        buttonText='Add garment'
-        onClose={closeAllModals}
-        >
-          <h4 className='form__label'>Name</h4>
-          <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
-          <span className='form__error' id='name-error'>Test Error</span>
-          <h4 className='form__label'>Image</h4>
-          <input name='image' className='form__input form__input_type_image' type='url' placeholder='Image URL' required />
-          <span className='form__error' id='image-error'></span>
-          <h4 className='form__label'>Select the weather type:</h4>
-          <div className='form__radio'>
-          <label className='form__label-radio'>
-            <input name='temp' className='form__input-radio' value='Hot' type='radio' />
-            Hot
-          </label>
-          <label className='form__label-radio'>
-          <input name='temp' className='form__input-radio' value='Warm' type='radio' />Warm
-          </label>
-          <label className='form__label-radio'>
-          <input name='temp' className='form__input-radio' value='Cold' type='radio' />Cold
-          </label>
-          </div>
-        </ModalWithForm>
-      )}
-      {activeModal === 'preview' && (
-        <ItemModal
-        card={selectedCard}
-        onClose={closeAllModals}
-      />
-      )}
+        <Header
+          weatherData={weatherData}
+          openModal={() => {
+            setActiveModal('create');
+          }}
+        />
+        <Switch>
+          <Route exact path='/'>
+            <Main
+            weatherData={weatherData}
+            cards={clothingItems}
+            handleCardClick={handleCardClick}
+            />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+        </Switch>
+        
+        <Footer />
+        {activeModal === 'create' && (
+          <ModalWithForm
+          isOpen={activeModal === 'create'}
+          title="New Garment"
+          name='create'
+          buttonText='Add garment'
+          onClose={closeAllModals}
+          >
+            <h4 className='form__label'>Name</h4>
+            <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
+            <span className='form__error' id='name-error'>Test Error</span>
+            <h4 className='form__label'>Image</h4>
+            <input name='image' className='form__input form__input_type_image' type='url' placeholder='Image URL' required />
+            <span className='form__error' id='image-error'></span>
+            <h4 className='form__label'>Select the weather type:</h4>
+            <div className='form__radio'>
+            <label className='form__label-radio'>
+              <input name='temp' className='form__input-radio' value='Hot' type='radio' />
+              Hot
+            </label>
+            <label className='form__label-radio'>
+            <input name='temp' className='form__input-radio' value='Warm' type='radio' />Warm
+            </label>
+            <label className='form__label-radio'>
+            <input name='temp' className='form__input-radio' value='Cold' type='radio' />Cold
+            </label>
+            </div>
+          </ModalWithForm>
+        )}
+        {activeModal === 'preview' && (
+          <ItemModal
+          card={selectedCard}
+          onClose={closeAllModals}
+        />
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

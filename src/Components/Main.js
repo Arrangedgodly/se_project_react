@@ -1,7 +1,9 @@
 import '../blocks/main.css';
 import '../blocks/cards.css';
+import React from 'react';
 import WeatherCard from './WeatherCard';
 import ItemCard from './ItemCard';
+import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 
 function filterCards(card, data) {
   if (card.weather === data.type) {
@@ -14,6 +16,7 @@ function filterCards(card, data) {
 
 function Main({weatherData, cards, handleCardClick}) {
   const initialCards = cards.filter(item => filterCards(item, weatherData));
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
 
   return (
     <div className="main">
@@ -21,7 +24,7 @@ function Main({weatherData, cards, handleCardClick}) {
         weatherData={weatherData}
       />
       <h3 className='cards__header'>
-        Today is: {weatherData.temp} / You may want to wear:
+        Today is:  / You may want to wear:
       </h3>
       <ul className='cards'>
         {
@@ -44,3 +47,5 @@ function Main({weatherData, cards, handleCardClick}) {
 }
 
 export default Main;
+
+/* {weatherData.temperature[currentTemperatureUnit]} */

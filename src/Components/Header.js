@@ -3,6 +3,7 @@ import React from 'react';
 import headerLogo from '../images/logo.svg';
 import avatarDefault from '../images/avatar.png';
 import ToggleSwitch from './ToggleSwitch';
+import { Link } from 'react-router-dom';
 
 function Header({weatherData, openModal}) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
@@ -15,15 +16,21 @@ function Header({weatherData, openModal}) {
 
   return (
     <header className="header">
-      <img className="header__logo" src={headerLogo} alt="wtwr logo" />
+      <Link to='/'>
+        <img className="header__logo" src={headerLogo} alt="wtwr logo" />
+      </Link>
       <h1 className="header__date">{currentDate}, {weatherData.name}</h1>
       <ToggleSwitch 
         isChecked={isChecked}
         handleClick={handleClick}
       />
       <button onClick={openModal} className="header__button">+ Add Clothes</button>
-      <p className="header__user">{username}</p>
-      <img className="header__avatar" src={avatarDefault} alt="user avatar" />
+      <Link to='/profile'>
+        <div className='header__profile'>
+          <p className="header__user">{username}</p>
+          <img className="header__avatar" src={avatarDefault} alt="user avatar" />
+        </div>
+      </Link>
     </header>
   )
 }

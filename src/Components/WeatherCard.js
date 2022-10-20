@@ -25,7 +25,7 @@ import {
 } from '../utils/constants';
 
 function WeatherCard({weatherData}) {
-  const context = React.useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
   const time = checkTime();
   const isSunny = checkSunny(weatherData.card);
   const isCloudy = checkCloudy(weatherData.card);
@@ -53,4 +53,4 @@ function WeatherCard({weatherData}) {
 
 export default WeatherCard;
 
-/* {`${weatherData.temperature[context.currentTemperatureUnit]}`} */
+/* {weatherData.temperature[currentTemperatureUnit]} */

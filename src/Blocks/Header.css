@@ -36,6 +36,13 @@
   margin-bottom: 36px;
 }
 
+.header__profile {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  text-decoration: none;
+}
+
 .header__user {
   margin-top: 40px;
   margin-right: 12px;
