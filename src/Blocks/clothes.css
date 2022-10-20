@@ -1,0 +1,32 @@
+.clothes__body {
+  width: 1015px;
+  height: 676px;
+}
+
+.clothes__header {
+  display: flex;
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 24.8px;
+  width: 500px;
+  height: 25px;
+  align-items: flex-end;
+  margin-left: 116px;
+  margin-top: 68px;
+}
+
+.clothes__title {
+  margin-right: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.clothes__button {
+  border-style: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 20px;
+  line-height: 24.8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+}
