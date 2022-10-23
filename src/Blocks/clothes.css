@@ -30,3 +30,12 @@
   margin-bottom: 0;
   cursor: pointer;
 }
+
+.clothes__body {
+  display: grid;
+  width: 1015px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  row-gap: 17px;
+  margin-bottom: 0;
+}

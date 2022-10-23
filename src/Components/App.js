@@ -85,10 +85,12 @@ function App() {
           </Route>
           <Route path='/profile'>
             <Profile 
+             clothingItems={clothingItems}
              openModal={() => {
               setActiveModal('create');
              }}
              onClose={closeAllModals}
+             handleCardClick={handleCardClick}
             />
           </Route>
         </Switch>
