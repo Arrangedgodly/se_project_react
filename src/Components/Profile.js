@@ -2,11 +2,13 @@ import '../blocks/profile.css';
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 
-function Profile() {
+function Profile({ openModal, onClose }) {
     return (
         <div className="profile">
             <SideBar />
-            <ClothesSection />
+            <ClothesSection 
+                openModal={openModal}
+            />
         </div>
     );
 }

@@ -33,6 +33,15 @@ function App() {
     : setCurrentTemperatureUnit('F');
   }
 
+  const handleAddItemSubmit = (name, link, weather) => {
+    const item = {
+      name: {name},
+      link: {link},
+      weather: {weather}
+    }
+    setClothingItems([item, ...clothingItems]);
+  }
+
   React.useEffect(() => {
     getWeatherInfo(apiKey, parsedLocation)
       .then(data => {
@@ -75,7 +84,12 @@ function App() {
             />
           </Route>
           <Route path='/profile'>
-            <Profile />
+            <Profile 
+             openModal={() => {
+              setActiveModal('create');
+             }}
+             onClose={closeAllModals}
+            />
           </Route>
         </Switch>
         
