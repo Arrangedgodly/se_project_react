@@ -13,7 +13,7 @@ function ClothesSection({ openModal, clothingItems, handleCardClick }) {
                     <ItemCard
                     key={item._id}
                     name={item.name}
-                    image={item.link}
+                    image={item.imageUrl}
                     weather={item.weather}
                     handleCardClick={() => {
                     handleCardClick(item)

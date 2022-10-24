@@ -7,9 +7,11 @@ import Footer from './Footer';
 import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
-import { defaultClothingItems, apiKey, parsedLocation, filterAPIData } from '../utils/constants';
+import { getClothingItems } from '../utils/api';
+import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { Route, Switch } from 'react-router-dom';
+import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
@@ -34,10 +36,12 @@ function App() {
   }
 
   const handleAddItemSubmit = (name, link, weather) => {
+    const id = clothingItems.length + 1;
     const item = {
+      id: {id},
       name: {name},
-      link: {link},
-      weather: {weather}
+      weather: {weather},
+      imageUrl: {link}
     }
     setClothingItems([item, ...clothingItems]);
   }
@@ -51,7 +55,10 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    setClothingItems(defaultClothingItems)
+    getClothingItems()
+      .then(data => {
+        setClothingItems(data)
+      })
   }, []);
 
   React.useEffect(() => {
@@ -87,10 +94,12 @@ function App() {
             <Profile 
              clothingItems={clothingItems}
              openModal={() => {
-              setActiveModal('create');
+              setActiveModal('addition');
              }}
+             isOpen={activeModal === 'addition'}
              onClose={closeAllModals}
              handleCardClick={handleCardClick}
+             handleAddItemSubmit={handleAddItemSubmit}
             />
           </Route>
         </Switch>
@@ -129,7 +138,23 @@ function App() {
           <ItemModal
           card={selectedCard}
           onClose={closeAllModals}
+          handleDeleteModal={() => {
+            setActiveModal('delete')
+          }}
         />
+        )}
+        {activeModal === 'delete' && (
+          <DeleteConfirmationModal
+          name='delete'
+          onClose={closeAllModals}
+          handleConfirm={() => {
+            closeAllModals();
+
+          }}
+          handleCancel={() => {
+            setActiveModal('preview')
+          }}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

@@ -1,6 +1,6 @@
 import '../blocks/main.css';
 import '../blocks/cards.css';
-import React from 'react';
+import {useContext} from 'react';
 import WeatherCard from './WeatherCard';
 import ItemCard from './ItemCard';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
@@ -16,7 +16,7 @@ function filterCards(card, data) {
 
 function Main({weatherData, cards, handleCardClick}) {
   const initialCards = cards.filter(item => filterCards(item, weatherData));
-  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <div className="main">
@@ -30,9 +30,9 @@ function Main({weatherData, cards, handleCardClick}) {
         {
           initialCards.map((item) => (
             <ItemCard
-              key={item._id}
+              key={item.id}
               name={item.name}
-              image={item.link}
+              image={item.imageUrl}
               weather={item.weather}
               handleCardClick={() => {
                 handleCardClick(item)

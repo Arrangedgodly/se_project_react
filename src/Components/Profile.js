@@ -4,17 +4,7 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import AddItemModal from './AddItemModal';
 
-function Profile({ clothingItems, onClose, handleCardClick }) {
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    const openModal = () => {
-        setIsOpen(true);
-    }
-
-    const closeModal = () => {
-        onClose();
-        setIsOpen(false);
-    }
+function Profile({ clothingItems, openModal, isOpen, onClose, handleCardClick, handleAddItemSubmit }) {
 
     return (
         <div className="profile">
@@ -27,7 +17,8 @@ function Profile({ clothingItems, onClose, handleCardClick }) {
             {isOpen && 
                 <AddItemModal 
                     isOpen={isOpen}
-                    onClose={closeModal}
+                    onAddItem={handleAddItemSubmit}
+                    onCloseModal={onClose}
                 />
             }
         </div>

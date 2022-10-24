@@ -1,16 +1,19 @@
 import '../blocks/itemModal.css';
 import '../blocks/modal.css';
+import { useState } from 'react';
+import DeleteConfirmationModal from './DeleteConfirmationModal';
 
-function ItemModal({card, onClose}) {
+function ItemModal({card, onClose, handleDeleteModal }) {
   return (
-    <div className='modal modal_type_preview'>
+      <div className='modal modal_type_preview'>
       <div className='modal__container modal__container-alt'>
         <button onClick={onClose}type='button' className='modal__close'></button>
-        <img src={card.link} alt={`Picture of ${card.name}`} className='modal__image' />
+        <img src={card.imageUrl} alt={`Picture of ${card.name}`} className='modal__image' />
         <h3 className='modal__title'>{card.name}</h3>
         <p className='modal__desc'>Weather: {card.weather}</p>
+        <button type='button' className='modal__delete' onClick={handleDeleteModal}>Delete Item</button>
       </div>
-    </div>
+    </div>   
   );
 }
 

@@ -35,6 +35,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       name="create"
       buttonText="Add garment"
       onClose={onCloseModal}
+      handleSubmit={handleSubmit}
     >
       <h4 className="form__label">Name</h4>
       <input
