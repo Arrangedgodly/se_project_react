@@ -7,7 +7,7 @@ import Footer from './Footer';
 import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
-import { getClothingItems } from '../utils/api';
+import { getClothingItems, removeClothingItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { Route, Switch } from 'react-router-dom';
@@ -149,7 +149,7 @@ function App() {
           onClose={closeAllModals}
           handleConfirm={() => {
             closeAllModals();
-
+            removeClothingItem(selectedCard);
           }}
           handleCancel={() => {
             setActiveModal('preview')

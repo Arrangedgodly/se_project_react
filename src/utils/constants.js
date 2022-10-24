@@ -70,13 +70,13 @@ const defineWeatherType = (string) => {
     return 'sunny';
   } else if (string === 'Partly cloudy' || string === 'Cloudy' || string === 'Overcast') {
     return 'cloudy';
-  } else if (string === 'Mist' || string.contains('rain') || string.contains('drizzle')) {
+  } else if (string === 'Mist' || string.includes('rain') || string.includes('drizzle')) {
     return 'rain';
-  } else if (string.contains('snow') || string.contains('sleet') || string.contains('ice')) {
+  } else if (string.includes('snow') || string.includes('sleet') || string.includes('ice')) {
     return 'snow';
-  } else if (string.contains('fog')) {
+  } else if (string.includes('fog')) {
     return 'fog';
-  } else if (string.contains('with thunder')) {
+  } else if (string.includes('with thunder')) {
     return 'storm';
   }
 }

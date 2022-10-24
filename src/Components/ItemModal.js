@@ -1,7 +1,5 @@
 import '../blocks/itemModal.css';
 import '../blocks/modal.css';
-import { useState } from 'react';
-import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 function ItemModal({card, onClose, handleDeleteModal }) {
   return (
