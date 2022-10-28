@@ -41,6 +41,7 @@
   flex-direction: row;
   font-style: normal;
   text-decoration: none;
+  color: #000;
 }
 
 .header__user {

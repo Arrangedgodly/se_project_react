@@ -45,12 +45,10 @@ function WeatherCard({weatherData}) {
 
   return (
     <div className={wrapperStyles}>
-      <p className='weather-card__temp'></p>
+      <p className='weather-card__temp'>{weatherData.temperature?.[currentTemperatureUnit]}</p>
       <img src={image} className='weather-card__image' alt={`Graphic of ${weatherData.card} weather`} />
     </div>
   );
 }
 
 export default WeatherCard;
-
-/* {weatherData.temperature[currentTemperatureUnit]} */

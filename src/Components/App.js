@@ -7,7 +7,7 @@ import Footer from './Footer';
 import ModalWithForm from './ModalWithForm';
 import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
-import { getClothingItems, removeClothingItem } from '../utils/api';
+import { getClothingItems, removeClothingItem, addClothingItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { Route, Switch } from 'react-router-dom';
@@ -35,15 +35,19 @@ function App() {
     : setCurrentTemperatureUnit('F');
   }
 
+  const fetchClothingItems = () => {
+    getClothingItems()
+      .then(data => {
+        setClothingItems(data)
+      })
+  }
+
   const handleAddItemSubmit = (name, link, weather) => {
     const id = clothingItems.length + 1;
-    const item = {
-      id: {id},
-      name: {name},
-      weather: {weather},
-      imageUrl: {link}
-    }
-    setClothingItems([item, ...clothingItems]);
+    addClothingItem(name, link, weather, id)
+      .then(res => console.log(res));
+    fetchClothingItems();
+    closeAllModals();
   }
 
   React.useEffect(() => {
@@ -55,10 +59,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    getClothingItems()
-      .then(data => {
-        setClothingItems(data)
-      })
+    fetchClothingItems()
   }, []);
 
   React.useEffect(() => {
@@ -83,14 +84,14 @@ function App() {
           }}
         />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/se_project_react/'>
             <Main
             weatherData={weatherData}
             cards={clothingItems}
             handleCardClick={handleCardClick}
             />
           </Route>
-          <Route path='/profile'>
+          <Route path='/se_project_react/profile'>
             <Profile 
              clothingItems={clothingItems}
              openModal={() => {
@@ -103,7 +104,6 @@ function App() {
             />
           </Route>
         </Switch>
-        
         <Footer />
         {activeModal === 'create' && (
           <ModalWithForm
@@ -149,7 +149,9 @@ function App() {
           onClose={closeAllModals}
           handleConfirm={() => {
             closeAllModals();
-            removeClothingItem(selectedCard);
+            removeClothingItem(selectedCard)
+              .then(res => console.log(res));
+            fetchClothingItems();
           }}
           handleCancel={() => {
             setActiveModal('preview')

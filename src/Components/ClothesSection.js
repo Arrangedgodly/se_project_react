@@ -11,7 +11,7 @@ function ClothesSection({ openModal, clothingItems, handleCardClick }) {
             <ul className="clothes__body">
                 {clothingItems.map(item => (
                     <ItemCard
-                    key={item._id}
+                    key={item.id}
                     name={item.name}
                     image={item.imageUrl}
                     weather={item.weather}

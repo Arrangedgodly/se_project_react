@@ -16,7 +16,7 @@ function Header({weatherData, openModal}) {
 
   return (
     <header className="header">
-      <Link to='/'>
+      <Link to='/se_project_react/'>
         <img className="header__logo" src={headerLogo} alt="wtwr logo" />
       </Link>
       <h1 className="header__date">{currentDate}, {weatherData.name}</h1>
@@ -25,11 +25,9 @@ function Header({weatherData, openModal}) {
         handleClick={handleClick}
       />
       <button onClick={openModal} className="header__button">+ Add Clothes</button>
-      <Link to='/profile'>
-        <div className='header__profile'>
+      <Link to='/se_project_react/profile' className="header__profile">
           <p className="header__user">{username}</p>
           <img className="header__avatar" src={avatarDefault} alt="user avatar" />
-        </div>
       </Link>
     </header>
   )

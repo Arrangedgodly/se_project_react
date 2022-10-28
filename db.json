@@ -1,6 +1,12 @@
 {
   "items": [
     {
+      "id": 0,
+      "name": "Beanie",
+      "weather": "cold",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
+    },
+    {
       "id": 1,
       "name": "Boot",
       "weather": "cold",
@@ -73,6 +79,12 @@
       "id": 12
     },
     {
+      "name": "Sneakers",
+      "weather": "warm",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
+      "id": 13
+    },
+    {
       "name": "Sunglasses",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
@@ -89,6 +101,36 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 16
+    },
+    {
+      "name": "Sweater",
+      "weather": "cold",
+      "imageUrl": "https://images.unsplash.com/photo-1536992266094-82847e1fd431?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=878&q=80",
+      "id": 19
+    },
+    {
+      "name": "Jean Jacket",
+      "weather": "warm",
+      "imageUrl": "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      "id": 20
+    },
+    {
+      "name": "Flannel",
+      "weather": "cold",
+      "imageUrl": "https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=692&q=80",
+      "id": 21
+    },
+    {
+      "name": "Track Suit",
+      "weather": "warm",
+      "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80",
+      "id": 23
+    },
+    {
+      "name": "Hat",
+      "weather": "warm",
+      "imageUrl": "https://images.unsplash.com/photo-1611747581894-45e5f11c7be6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "id": 22
     }
   ]
 }

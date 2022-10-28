@@ -24,7 +24,7 @@ function Main({weatherData, cards, handleCardClick}) {
         weatherData={weatherData}
       />
       <h3 className='cards__header'>
-        Today is:  / You may want to wear:
+        Today is: {weatherData.temperature?.[currentTemperatureUnit]} / You may want to wear:
       </h3>
       <ul className='cards'>
         {
@@ -47,5 +47,3 @@ function Main({weatherData, cards, handleCardClick}) {
 }
 
 export default Main;
-
-/* {weatherData.temperature[currentTemperatureUnit]} */
