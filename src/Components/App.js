@@ -4,7 +4,7 @@ import Main from "./Main";
 import Profile from './Profile';
 import Header from './Header';
 import Footer from './Footer';
-import ModalWithForm from './ModalWithForm';
+import AddItemModal from './AddItemModal';
 import ItemModal from './ItemModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { getClothingItems, removeClothingItem, addClothingItem } from '../utils/api';
@@ -45,8 +45,7 @@ function App() {
   const handleAddItemSubmit = (name, link, weather) => {
     const id = clothingItems.length + 1;
     addClothingItem(name, link, weather, id)
-      .then(res => console.log(res));
-    fetchClothingItems();
+      .then(res => fetchClothingItems());
     closeAllModals();
   }
 
@@ -80,7 +79,7 @@ function App() {
         <Header
           weatherData={weatherData}
           openModal={() => {
-            setActiveModal('create');
+            setActiveModal('addition');
           }}
         />
         <Switch>
@@ -105,35 +104,12 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-        {activeModal === 'create' && (
-          <ModalWithForm
-          isOpen={activeModal === 'create'}
-          name='create'
-          onClose={closeAllModals}
-          title="New Garment"
-          buttonText='Add garment'
-          handleSubmit={handleAddItemSubmit}
-          >
-            <h4 className='form__label'>Name</h4>
-            <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
-            <span className='form__error' id='name-error'>Test Error</span>
-            <h4 className='form__label'>Image</h4>
-            <input name='image' className='form__input form__input_type_image' type='url' placeholder='Image URL' required />
-            <span className='form__error' id='image-error'></span>
-            <h4 className='form__label'>Select the weather type:</h4>
-            <div className='form__radio'>
-            <label className='form__label-radio'>
-              <input name='temp' className='form__input-radio' value='hot' type='radio' />
-              Hot
-            </label>
-            <label className='form__label-radio'>
-            <input name='temp' className='form__input-radio' value='warm' type='radio' />Warm
-            </label>
-            <label className='form__label-radio'>
-            <input name='temp' className='form__input-radio' value='cold' type='radio' />Cold
-            </label>
-            </div>
-          </ModalWithForm>
+        {activeModal === 'addition' && (
+          <AddItemModal
+            isOpen={activeModal === 'addition'}
+            onAddItem={handleAddItemSubmit}
+            onCloseModal={closeAllModals}
+          />
         )}
         {activeModal === 'preview' && (
           <ItemModal
@@ -151,8 +127,7 @@ function App() {
           handleConfirm={() => {
             closeAllModals();
             removeClothingItem(selectedCard)
-              .then(res => console.log(res));
-            fetchClothingItems();
+              .then(res => fetchClothingItems());
           }}
           handleCancel={() => {
             setActiveModal('preview')
