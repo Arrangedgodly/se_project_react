@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/se_project_react/static/css/main.489818d6.css",
-    "main.js": "/se_project_react/static/js/main.e9529b10.js",
+    "main.js": "/se_project_react/static/js/main.702c342d.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
     "static/media/CabinetGrotesk-Medium.otf": "/se_project_react/static/media/CabinetGrotesk-Medium.b8b578586abc9d55dcda.otf",
     "static/media/day-snow.svg": "/se_project_react/static/media/day-snow.fd04e47bd9f175476d4d08839272c095.svg",
@@ -20,11 +20,11 @@
     "static/media/day-sunny.svg": "/se_project_react/static/media/day-sunny.894edbd45c5a7e558a52e941d1929f94.svg",
     "static/media/night-sunny.svg": "/se_project_react/static/media/night-sunny.e9e18aa81ff2ec05b2e6b966228e4e88.svg",
     "main.489818d6.css.map": "/se_project_react/static/css/main.489818d6.css.map",
-    "main.e9529b10.js.map": "/se_project_react/static/js/main.e9529b10.js.map",
+    "main.702c342d.js.map": "/se_project_react/static/js/main.702c342d.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.489818d6.css",
-    "static/js/main.e9529b10.js"
+    "static/js/main.702c342d.js"
   ]
 }
