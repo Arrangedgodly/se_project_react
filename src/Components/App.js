@@ -108,10 +108,11 @@ function App() {
         {activeModal === 'create' && (
           <ModalWithForm
           isOpen={activeModal === 'create'}
-          title="New Garment"
           name='create'
-          buttonText='Add garment'
           onClose={closeAllModals}
+          title="New Garment"
+          buttonText='Add garment'
+          handleSubmit={handleAddItemSubmit}
           >
             <h4 className='form__label'>Name</h4>
             <input name='name' className='form__input form__input_type_name' type='text' placeholder='Name' minLength='1' maxLength='30' required />
@@ -122,14 +123,14 @@ function App() {
             <h4 className='form__label'>Select the weather type:</h4>
             <div className='form__radio'>
             <label className='form__label-radio'>
-              <input name='temp' className='form__input-radio' value='Hot' type='radio' />
+              <input name='temp' className='form__input-radio' value='hot' type='radio' />
               Hot
             </label>
             <label className='form__label-radio'>
-            <input name='temp' className='form__input-radio' value='Warm' type='radio' />Warm
+            <input name='temp' className='form__input-radio' value='warm' type='radio' />Warm
             </label>
             <label className='form__label-radio'>
-            <input name='temp' className='form__input-radio' value='Cold' type='radio' />Cold
+            <input name='temp' className='form__input-radio' value='cold' type='radio' />Cold
             </label>
             </div>
           </ModalWithForm>
