@@ -45,7 +45,7 @@ function App() {
   const handleAddItemSubmit = (name, link, weather) => {
     const id = clothingItems.length + 1;
     addClothingItem(name, link, weather, id)
-      .then(res => fetchClothingItems());
+      .then(res => setClothingItems([res, ...clothingItems]));
     closeAllModals();
   }
 
@@ -83,14 +83,14 @@ function App() {
           }}
         />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/se_project_react/'>
             <Main
             weatherData={weatherData}
             cards={clothingItems}
             handleCardClick={handleCardClick}
             />
           </Route>
-          <Route path='/profile'>
+          <Route path='/se_project_react/profile'>
             <Profile 
              clothingItems={clothingItems}
              openModal={() => {
@@ -104,13 +104,6 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-        {activeModal === 'addition' && (
-          <AddItemModal
-            isOpen={activeModal === 'addition'}
-            onAddItem={handleAddItemSubmit}
-            onCloseModal={closeAllModals}
-          />
-        )}
         {activeModal === 'preview' && (
           <ItemModal
           card={selectedCard}
