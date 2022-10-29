@@ -83,14 +83,14 @@ function App() {
           }}
         />
         <Switch>
-          <Route exact path='/se_project_react/'>
+          <Route exact path='/'>
             <Main
             weatherData={weatherData}
             cards={clothingItems}
             handleCardClick={handleCardClick}
             />
           </Route>
-          <Route path='/se_project_react/profile'>
+          <Route path='/profile'>
             <Profile 
              clothingItems={clothingItems}
              openModal={() => {
