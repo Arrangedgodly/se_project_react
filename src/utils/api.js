@@ -1,22 +1,26 @@
 const baseUrl = 'https://my-json-server.typicode.com/arrangedgodly/se_project_react';
 
 function checkResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error ${res.status}`);
+  return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
 }
 
 const getClothingItems = () => {
-  return fetch(`${baseUrl}/items`)
-    .then(res => checkResponse(res))
+  return fetch(`${baseUrl}/items`, {
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  })
+    .then(checkResponse)
 }
 
 const removeClothingItem = (card) => {
   return fetch(`${baseUrl}/items/${card.id}`, {
     method: "DELETE",
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
   })
-    .then(res => checkResponse(res))
+    .then(checkResponse)
 }
 
 const addClothingItem = (name, link, weather, id) => {
@@ -32,7 +36,7 @@ const addClothingItem = (name, link, weather, id) => {
       'Content-type': 'application/json; charset=UTF-8',
     }
   })
-    .then(res => checkResponse(res))
+    .then(checkResponse)
 }
 
 export { getClothingItems, removeClothingItem, addClothingItem };

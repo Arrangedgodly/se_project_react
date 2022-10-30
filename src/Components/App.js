@@ -40,13 +40,24 @@ function App() {
       .then(data => {
         setClothingItems(data)
       })
+      .catch((err) => console.log(err));
   }
 
   const handleAddItemSubmit = (name, link, weather) => {
     const id = clothingItems.length + 1;
     addClothingItem(name, link, weather, id)
-      .then(res => setClothingItems([res, ...clothingItems]));
+      .then(res => setClothingItems([res, ...clothingItems]))
+      .catch((err) => console.log(err));
     closeAllModals();
+  }
+
+  const handleCardDelete = (card) => {
+    removeClothingItem(card)
+      .then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        closeAllModals();
+      })
+      .catch((err) => console.log(err));
   }
 
   React.useEffect(() => {
@@ -104,6 +115,13 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        {activeModal === 'addition' && (
+          <AddItemModal
+            isOpen={activeModal === 'addition'}
+            onAddItem={handleAddItemSubmit}
+            onCloseModal={closeAllModals}
+          />
+        )}
         {activeModal === 'preview' && (
           <ItemModal
           card={selectedCard}
@@ -117,11 +135,7 @@ function App() {
           <DeleteConfirmationModal
           name='delete'
           onClose={closeAllModals}
-          handleConfirm={() => {
-            closeAllModals();
-            removeClothingItem(selectedCard)
-              .then(res => fetchClothingItems());
-          }}
+          handleConfirm={() => handleCardDelete(selectedCard)}
           handleCancel={() => {
             setActiveModal('preview')
           }}
