@@ -19,6 +19,7 @@ function App() {
   const [activeModal, setActiveModal] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -26,7 +27,7 @@ function App() {
   }
 
   const closeAllModals = () => {
-    setActiveModal();
+    setActiveModal(null);
   }
 
   const handleToggleSwitchChange = () => {
@@ -44,18 +45,24 @@ function App() {
   }
 
   const handleAddItemSubmit = (name, link, weather) => {
+    setIsLoading(true);
     const id = clothingItems.length + 1;
     addClothingItem(name, link, weather, id)
-      .then(res => setClothingItems([res, ...clothingItems]))
+      .then(res => {
+        setClothingItems([res, ...clothingItems]);
+        closeAllModals();
+        setIsLoading(false);
+      })
       .catch((err) => console.log(err));
-    closeAllModals();
   }
 
   const handleCardDelete = (card) => {
+    setIsLoading(true);
     removeClothingItem(card)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
         closeAllModals();
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }
@@ -111,6 +118,7 @@ function App() {
              onClose={closeAllModals}
              handleCardClick={handleCardClick}
              handleAddItemSubmit={handleAddItemSubmit}
+             isLoading={isLoading}
             />
           </Route>
         </Switch>
@@ -120,6 +128,7 @@ function App() {
             isOpen={activeModal === 'addition'}
             onAddItem={handleAddItemSubmit}
             onCloseModal={closeAllModals}
+            isLoading={isLoading}
           />
         )}
         {activeModal === 'preview' && (
@@ -139,6 +148,7 @@ function App() {
           handleCancel={() => {
             setActiveModal('preview')
           }}
+          isLoading={isLoading}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>

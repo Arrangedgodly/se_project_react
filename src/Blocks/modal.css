@@ -105,10 +105,10 @@
   color: #FF4D00;
   position: absolute;
   top: 148px;
-  left: 266px;
   font-size: 20px;
   line-height: 24px;
   cursor: pointer;
+  width: 100%;
 }
 
 .modal__cancel {
