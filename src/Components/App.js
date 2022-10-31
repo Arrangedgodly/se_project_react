@@ -46,7 +46,7 @@ function App() {
 
   const handleAddItemSubmit = (name, link, weather) => {
     setIsLoading(true);
-    const id = clothingItems.length + 1;
+    const id = clothingItems.length + 10;
     addClothingItem(name, link, weather, id)
       .then(res => {
         setClothingItems([res, ...clothingItems]);
