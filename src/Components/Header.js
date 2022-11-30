@@ -5,7 +5,7 @@ import avatarDefault from '../images/avatar.png';
 import ToggleSwitch from './ToggleSwitch';
 import { Link } from 'react-router-dom';
 
-function Header({weatherData, openModal}) {
+function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLoggedIn }) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const username = 'Grady Wasil';
   const [isChecked, setIsChecked] = React.useState(false);
@@ -24,11 +24,21 @@ function Header({weatherData, openModal}) {
         isChecked={isChecked}
         handleClick={handleClick}
       />
-      <button onClick={openModal} className="header__button">+ Add Clothes</button>
-      <Link to='/se_project_react/profile' className="header__profile">
-          <p className="header__user">{username}</p>
-          <img className="header__avatar" src={avatarDefault} alt="user avatar" />
-      </Link>
+      {isLoggedIn ? (
+        <>
+        <button onClick={openModal} className="header__button">+ Add Clothes</button>
+        <Link to='/se_project_react/profile' className="header__profile">
+            <p className="header__user">{username}</p>
+            <img className="header__avatar" src={avatarDefault} alt="user avatar" />
+        </Link>
+        </>
+      ) : (
+        <>
+        <button onClick={openRegisterModal} className="header__button">Sign Up</button>
+        <button onClick={openLoginModal} className="header__button">Log In</button>
+        </>
+      )}
+      
     </header>
   )
 }

@@ -6,9 +6,12 @@ import Header from './Header';
 import Footer from './Footer';
 import AddItemModal from './AddItemModal';
 import ItemModal from './ItemModal';
+import RegisterModal from './RegisterModal';
+import LoginModal from './LoginModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { getClothingItems, removeClothingItem, addClothingItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
+import { createUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { Route, Switch } from 'react-router-dom';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
@@ -20,6 +23,7 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -67,6 +71,28 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  const handleRegisterUser = (name, avatar, email, password) => {
+    setIsLoading(true);
+    createUser(name, avatar, email, password)
+      .then(() => {
+        setIsLoggedIn(true);
+        closeAllModals();
+        setIsLoading(false);
+      })
+      .catch(err => console.log(err));
+  }
+
+  const handleLogin = (email, password) => {
+    setIsLoading(true);
+    login(email, password)
+      .then(() => {
+        setIsLoggedIn(true);
+        closeAllModals();
+        setIsLoading(false);
+      })
+      .catch(err => console.log(err));
+  }
+
   React.useEffect(() => {
     getWeatherInfo(apiKey, parsedLocation)
       .then(data => {
@@ -99,6 +125,13 @@ function App() {
           openModal={() => {
             setActiveModal('addition');
           }}
+          openRegisterModal={() => {
+            setActiveModal('register');
+          }}
+          openLoginModal={() => {
+            setActiveModal('login');
+          }}
+          isLoggedIn={isLoggedIn}
         />
         <Switch>
           <Route exact path='/se_project_react/'>
@@ -149,6 +182,22 @@ function App() {
             setActiveModal('preview')
           }}
           isLoading={isLoading}
+          />
+        )}
+        {activeModal === 'register' && (
+          <RegisterModal
+            isOpen={activeModal === 'register'}
+            onCloseModal={closeAllModals}
+            onRegisterUser={handleRegisterUser}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === 'login' && (
+          <LoginModal
+            isOpen={activeModal === 'login'}
+            onLogin={handleLogin}
+            onCloseModal={closeAllModals}
+            isLoading={isLoading}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
