@@ -26,4 +26,15 @@ const login = (email, password) => {
     .then(checkResponse)
 }
 
-export { createUser, login };
+const checkAuth = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    }
+  })
+    .then(checkResponse)
+}
+
+export { createUser, login, checkAuth };

@@ -11,8 +11,9 @@ import LoginModal from './LoginModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { getClothingItems, removeClothingItem, addClothingItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
-import { createUser, login } from '../utils/auth';
+import { checkAuth, createUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch } from 'react-router-dom';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
@@ -24,6 +25,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   const [isLoading, setIsLoading] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -42,8 +44,8 @@ function App() {
 
   const fetchClothingItems = () => {
     getClothingItems()
-      .then(data => {
-        setClothingItems(data)
+      .then(items => {
+        setClothingItems(items)
       })
       .catch((err) => console.log(err));
   }
@@ -85,7 +87,8 @@ function App() {
   const handleLogin = (email, password) => {
     setIsLoading(true);
     login(email, password)
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeAllModals();
         setIsLoading(false);
@@ -115,7 +118,22 @@ function App() {
     return () => {window.removeEventListener('keydown', handleEscKey)}
   }, [])
 
+  React.useEffect(() => {
+    checkAuth(localStorage.getItem('jwt'))
+      .then(user => {
+        if (user) {
+          setIsLoggedIn(true);
+          setCurrentUser(user);
+        }
+        else {
+          setIsLoggedIn(false);
+          setCurrentUser({});
+        }
+      })
+  }, [])
+
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="App">
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -202,6 +220,7 @@ function App() {
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 

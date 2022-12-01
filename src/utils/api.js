@@ -1,4 +1,4 @@
-const baseUrl = 'https://my-json-server.typicode.com/arrangedgodly/se_project_react';
+const baseUrl = 'http://localhost:3001';
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
@@ -18,6 +18,7 @@ const removeClothingItem = (card) => {
     method: "DELETE",
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
     }
   })
     .then(checkResponse)
@@ -34,6 +35,7 @@ const addClothingItem = (name, link, weather, id) => {
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
     }
   })
     .then(checkResponse)
