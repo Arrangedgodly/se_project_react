@@ -5,9 +5,8 @@ import avatarDefault from '../images/avatar.png';
 import ToggleSwitch from './ToggleSwitch';
 import { Link } from 'react-router-dom';
 
-function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLoggedIn }) {
+function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLoggedIn, currentUser }) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-  const username = 'Grady Wasil';
   const [isChecked, setIsChecked] = React.useState(false);
 
   const handleClick = () => {
@@ -28,8 +27,8 @@ function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLo
         <>
         <button onClick={openModal} className="header__button">+ Add Clothes</button>
         <Link to='/se_project_react/profile' className="header__profile">
-            <p className="header__user">{username}</p>
-            <img className="header__avatar" src={avatarDefault} alt="user avatar" />
+            <p className="header__user">{currentUser.name}</p>
+            <img className="header__avatar" src={currentUser.avatar} alt="user avatar" />
         </Link>
         </>
       ) : (

@@ -14,7 +14,7 @@ import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { checkAuth, createUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 function App() {
@@ -96,6 +96,12 @@ function App() {
       .catch(err => console.log(err));
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  }
+
   React.useEffect(() => {
     getWeatherInfo(apiKey, parsedLocation)
       .then(data => {
@@ -130,7 +136,7 @@ function App() {
           setCurrentUser({});
         }
       })
-  }, [])
+  }, [isLoggedIn])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -150,6 +156,7 @@ function App() {
             setActiveModal('login');
           }}
           isLoggedIn={isLoggedIn}
+          currentUser={currentUser}
         />
         <Switch>
           <Route exact path='/se_project_react/'>
@@ -157,9 +164,12 @@ function App() {
             weatherData={weatherData}
             cards={clothingItems}
             handleCardClick={handleCardClick}
+            isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
             />
           </Route>
           <Route path='/se_project_react/profile'>
+            {isLoggedIn ? <Redirect to='/se_project_react/profile' /> : <Redirect to='/se_project_react/' />}
             <Profile 
              clothingItems={clothingItems}
              openModal={() => {
@@ -170,6 +180,8 @@ function App() {
              handleCardClick={handleCardClick}
              handleAddItemSubmit={handleAddItemSubmit}
              isLoading={isLoading}
+             currentUser={currentUser}
+             handleLogout={handleLogout}
             />
           </Route>
         </Switch>
@@ -189,6 +201,7 @@ function App() {
           handleDeleteModal={() => {
             setActiveModal('delete')
           }}
+          currentUser={currentUser}
         />
         )}
         {activeModal === 'delete' && (

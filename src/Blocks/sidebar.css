@@ -4,6 +4,11 @@
   margin-top: 47px;
   margin-left: 40px;
   display: flex;
+  flex-direction: column;
+}
+
+.sidebar-wrapper {
+  display: flex;
 }
 
 .sidebar__image {
@@ -14,4 +19,18 @@
 
 .sidebar__text {
   font-size: 20px;
+}
+
+.sidebar__button {
+  display: flex;
+  border: none;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.sidebar__button:first-of-type {
+  margin-top: 24px;
 }
