@@ -16,6 +16,7 @@ function Profile({ clothingItems, openModal, isOpen, onClose, handleCardClick, h
                 openModal={openModal}
                 clothingItems={clothingItems}
                 handleCardClick={handleCardClick}
+                currentUser={currentUser}
             />
             {isOpen && 
                 <AddItemModal 

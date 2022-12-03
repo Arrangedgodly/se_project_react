@@ -1,7 +1,7 @@
 import '../blocks/clothes.css';
 import ItemCard from './ItemCard';
 
-function ClothesSection({ openModal, clothingItems, handleCardClick }) {
+function ClothesSection({ openModal, clothingItems, handleCardClick, currentUser }) {
     return (
         <div className='clothes'>
             <div className='clothes__header'>
@@ -18,6 +18,8 @@ function ClothesSection({ openModal, clothingItems, handleCardClick }) {
                     handleCardClick={() => {
                     handleCardClick(item)
                     }}
+                    item={item}
+                    currentUser={currentUser}
                     />
                 ))}
             </ul>
