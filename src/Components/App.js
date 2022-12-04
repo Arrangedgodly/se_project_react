@@ -9,7 +9,7 @@ import ItemModal from './ItemModal';
 import RegisterModal from './RegisterModal';
 import LoginModal from './LoginModal';
 import {getWeatherInfo} from '../utils/weatherApi';
-import { getClothingItems, removeClothingItem, addClothingItem } from '../utils/api';
+import { getClothingItems, removeClothingItem, addClothingItem, likeItem, dislikeItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { checkAuth, createUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
@@ -136,7 +136,7 @@ function App() {
           setCurrentUser({});
         }
       })
-  }, [isLoggedIn])
+  }, [])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -166,6 +166,8 @@ function App() {
             handleCardClick={handleCardClick}
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
+            likeItem={likeItem}
+            dislikeItem={dislikeItem}
             />
           </Route>
           <Route path='/se_project_react/profile'>
@@ -182,6 +184,9 @@ function App() {
              isLoading={isLoading}
              currentUser={currentUser}
              handleLogout={handleLogout}
+             likeItem={likeItem}
+             dislikeItem={dislikeItem}
+             isLoggedIn={isLoggedIn}
             />
           </Route>
         </Switch>

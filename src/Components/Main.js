@@ -14,7 +14,14 @@ function filterCards(card, data) {
   }
 }
 
-function Main({weatherData, cards, handleCardClick, isLoggedIn, currentUser }) {
+function Main({ 
+  weatherData, 
+  cards, 
+  handleCardClick, 
+  isLoggedIn, 
+  currentUser, 
+  likeItem, 
+  dislikeItem }) {
   const initialCards = cards.filter(item => filterCards(item, weatherData));
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -40,6 +47,8 @@ function Main({weatherData, cards, handleCardClick, isLoggedIn, currentUser }) {
               isLoggedIn={isLoggedIn}
               item={item}
               currentUser={currentUser}
+              likeItem={likeItem}
+              dislikeItem={dislikeItem}
             />
           )
           )

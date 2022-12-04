@@ -4,7 +4,19 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import AddItemModal from './AddItemModal';
 
-function Profile({ clothingItems, openModal, isOpen, onClose, handleCardClick, handleAddItemSubmit, isLoading, currentUser, handleLogout }) {
+function Profile({ 
+  isLoggedIn, 
+  clothingItems, 
+  openModal, 
+  isOpen, 
+  onClose, 
+  handleCardClick, 
+  handleAddItemSubmit, 
+  isLoading, 
+  currentUser, 
+  handleLogout, 
+  likeItem, 
+  dislikeItem }) {
 
     return (
         <div className="profile">
@@ -14,9 +26,12 @@ function Profile({ clothingItems, openModal, isOpen, onClose, handleCardClick, h
             />
             <ClothesSection 
                 openModal={openModal}
+                isLoggedIn={isLoggedIn}
                 clothingItems={clothingItems}
                 handleCardClick={handleCardClick}
                 currentUser={currentUser}
+                likeItem={likeItem}
+                dislikeItem={dislikeItem}
             />
             {isOpen && 
                 <AddItemModal 

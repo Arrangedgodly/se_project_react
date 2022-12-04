@@ -41,6 +41,28 @@ const addClothingItem = (name, link, weather, id) => {
     .then(checkResponse)
 }
 
-export { getClothingItems, removeClothingItem, addClothingItem };
+const likeItem = (itemId) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    }
+  })
+    .then(checkResponse)
+}
+
+const dislikeItem = (itemId) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    }
+  })
+    .then(checkResponse)
+}
+
+export { getClothingItems, removeClothingItem, addClothingItem, likeItem, dislikeItem };
 
 /* http://localhost:3001 | https://my-json-server.typicode.com/arrangedgodly/se_project_react */
