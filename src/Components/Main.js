@@ -37,7 +37,7 @@ function Main({
         {
           initialCards.map((item) => (
             <ItemCard
-              key={item.id}
+              key={item._id}
               name={item.name}
               image={item.imageUrl}
               weather={item.weather}

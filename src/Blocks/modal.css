@@ -37,6 +37,11 @@
   height: 280px;
 }
 
+.modal__container-edit-profile, .modal__container-login {
+  width: 496px;
+  height: 304px;
+}
+
 .modal__close {
   background: url('../images/close.svg');
   width: 14px;

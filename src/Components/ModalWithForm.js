@@ -11,7 +11,7 @@ function ModalWithForm({
   handleSubmit }) {
   return (
     <div className={isOpen ? `modal modal_type_${name}` : `modal modal_type_${name} modal_hidden`} >
-      <div className={`modal__container modal__container_${name}`}>
+      <div className={`modal__container modal__container-${name}`}>
         <button onClick={onClose} type='button' className='modal__close' />
         <h3 className='modal__header'>{title}</h3>
         <form className={`form form_type_${name}`} onSubmit={handleSubmit}>

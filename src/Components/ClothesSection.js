@@ -18,7 +18,7 @@ function ClothesSection({
             <ul className="clothes__body">
                 {clothingItems.map(item => (
                     <ItemCard
-                    key={item.id}
+                    key={item._id}
                     name={item.name}
                     image={item.imageUrl}
                     weather={item.weather}

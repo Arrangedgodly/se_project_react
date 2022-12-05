@@ -2,16 +2,16 @@ import '../blocks/card.css';
 import React from 'react';
 
 function ItemCard(props) {
-  const [isLiked, setIsLiked] = React.useState(props.item.likes.some(user => user._id === props.currentUser._id));
+  const [isLiked, setIsLiked] = React.useState(props.item.likes.includes(props.currentUser._id));
 
   const handleLike = () => {
-    props.likeItem(props.item._id);
-    setIsLiked(true);
+    props.likeItem(props.item._id)
+      .then(setIsLiked(true));
   }
 
   const handleDislike = () => {
-    props.dislikeItem(props.item._id);
-    setIsLiked(false);
+    props.dislikeItem(props.item._id)
+      .then(setIsLiked(false));
   }
 
   return (

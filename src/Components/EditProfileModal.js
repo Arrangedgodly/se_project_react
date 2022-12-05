@@ -1,9 +1,9 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
 
-const EditProfileModal = ({ isOpen, handleEditUser, onCloseModal, isLoading }) => {
-  const [name, setName] = React.useState("");
-  const [avatar, setAvatar] = React.useState("");
+const EditProfileModal = ({ isOpen, currentUser, handleEditUser, onCloseModal, isLoading }) => {
+  const [name, setName] = React.useState(currentUser.name);
+  const [avatar, setAvatar] = React.useState(currentUser.avatar);
 
   const handleName = (e) => {
     setName(e.target.value);

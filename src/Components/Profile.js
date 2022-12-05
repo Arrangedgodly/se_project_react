@@ -49,6 +49,7 @@ function Profile({
             {isEditOpen && 
               <EditProfileModal 
                 isOpen={isEditOpen}
+                currentUser={currentUser}
                 handleEditUser={handleEditUser}
                 onCloseModal={onClose}
                 isLoading={isLoading}

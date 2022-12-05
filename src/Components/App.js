@@ -100,6 +100,7 @@ function App() {
     login(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+        handleAuth();
         setIsLoggedIn(true);
         closeAllModals();
         setIsLoading(false);
@@ -111,6 +112,20 @@ function App() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     setCurrentUser({});
+  }
+
+  const handleAuth = () => {
+    checkAuth(localStorage.getItem('jwt'))
+    .then(user => {
+      if (user) {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+      }
+      else {
+        setIsLoggedIn(false);
+        setCurrentUser({});
+      }
+    })
   }
 
   React.useEffect(() => {
@@ -136,17 +151,7 @@ function App() {
   }, [])
 
   React.useEffect(() => {
-    checkAuth(localStorage.getItem('jwt'))
-      .then(user => {
-        if (user) {
-          setIsLoggedIn(true);
-          setCurrentUser(user);
-        }
-        else {
-          setIsLoggedIn(false);
-          setCurrentUser({});
-        }
-      })
+    handleAuth()
   }, [])
 
   return (
