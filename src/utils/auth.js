@@ -15,6 +15,18 @@ const createUser = (name, avatar, email, password) => {
     .then(checkResponse)
 }
 
+const editUser = (name, avatar) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    },
+    body: JSON.stringify({ name, avatar })
+  })
+    .then(checkResponse)
+}
+
 const login = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
@@ -37,4 +49,4 @@ const checkAuth = (token) => {
     .then(checkResponse)
 }
 
-export { createUser, login, checkAuth };
+export { createUser, editUser, login, checkAuth };

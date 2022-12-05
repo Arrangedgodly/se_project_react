@@ -3,15 +3,19 @@ import React from 'react';
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import AddItemModal from './AddItemModal';
+import EditProfileModal from './EditProfileModal';
 
 function Profile({ 
   isLoggedIn, 
   clothingItems, 
-  openModal, 
-  isOpen, 
+  openModal,
+  openEditModal, 
+  isOpen,
+  isEditOpen,
   onClose, 
   handleCardClick, 
-  handleAddItemSubmit, 
+  handleAddItemSubmit,
+  handleEditUser, 
   isLoading, 
   currentUser, 
   handleLogout, 
@@ -23,6 +27,7 @@ function Profile({
             <SideBar 
             currentUser={currentUser}
             handleLogout={handleLogout}
+            openEditModal={openEditModal}
             />
             <ClothesSection 
                 openModal={openModal}
@@ -40,6 +45,14 @@ function Profile({
                     onCloseModal={onClose}
                     isLoading={isLoading}
                 />
+            }
+            {isEditOpen && 
+              <EditProfileModal 
+                isOpen={isEditOpen}
+                handleEditUser={handleEditUser}
+                onCloseModal={onClose}
+                isLoading={isLoading}
+              />
             }
         </div>
     );

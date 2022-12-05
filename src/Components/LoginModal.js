@@ -23,7 +23,7 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
       isOpen={isOpen}
       name='login'
       title='Log In'
-      buttonText={isLoading ? "Logging In..." : "Sign Me In!"}
+      buttonText={isLoading ? "Logging In..." : "Log In"}
       onClose={onCloseModal}
       handleSubmit={handleSubmit}
     >

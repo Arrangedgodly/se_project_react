@@ -1,39 +1,29 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
 
-const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
+const EditProfileModal = ({ isOpen, handleEditUser, onCloseModal, isLoading }) => {
   const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
   const [avatar, setAvatar] = React.useState("");
-  const [password, setPassword] = React.useState("");
 
   const handleName = (e) => {
     setName(e.target.value);
-  }
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
   }
 
   const handleAvatar = (e) => {
     setAvatar(e.target.value);
   }
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    onRegisterUser(name, avatar, email, password);
+    handleEditUser(name, avatar);
   }
 
   return (
     <ModalWithForm
       isOpen={isOpen}
-      name='register'
-      title='Sign Up'
-      buttonText={isLoading ? "Saving..." : "Next"}
+      name='edit-profile'
+      title='Edit Profile'
+      buttonText={isLoading ? 'Saving...' : 'Save changes'}
       onClose={onCloseModal}
       handleSubmit={handleSubmit}
     >
@@ -49,16 +39,6 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         onChange={handleName}
         required
       />
-      <h4 className="form__label">Email</h4>
-      <input
-        name="email"
-        className="form__input form__input_type_email"
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={handleEmail}
-        required
-      />
       <h4 className="form__label">Avatar</h4>
       <input
         name="avatar"
@@ -69,18 +49,8 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         onChange={handleAvatar}
         required
       />
-      <h4 className="form__label">Password</h4>
-      <input
-        name="password"
-        className="form__input form__input-alt form__input_type_password"
-        type='text'
-        placeholder='Password'
-        value={password}
-        onChange={handlePassword}
-        required
-      />
     </ModalWithForm>
-  )
-}
+  );
+};
 
-export default RegisterModal;
+export default EditProfileModal;

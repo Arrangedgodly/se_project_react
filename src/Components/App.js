@@ -11,7 +11,7 @@ import LoginModal from './LoginModal';
 import {getWeatherInfo} from '../utils/weatherApi';
 import { getClothingItems, removeClothingItem, addClothingItem, likeItem, dislikeItem } from '../utils/api';
 import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
-import { checkAuth, createUser, login } from '../utils/auth';
+import { checkAuth, createUser, editUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -78,6 +78,17 @@ function App() {
     createUser(name, avatar, email, password)
       .then(() => {
         setIsLoggedIn(true);
+        closeAllModals();
+        setIsLoading(false);
+      })
+      .catch(err => console.log(err));
+  }
+
+  const handleEditUser = (name, avatar) => {
+    setIsLoading(true);
+    editUser(name, avatar)
+      .then((res) => {
+        setCurrentUser(res);
         closeAllModals();
         setIsLoading(false);
       })
@@ -177,10 +188,15 @@ function App() {
              openModal={() => {
               setActiveModal('addition');
              }}
+             openEditModal={() => {
+              setActiveModal('edit');
+             }}
              isOpen={activeModal === 'addition'}
+             isEditOpen={activeModal === 'edit'}
              onClose={closeAllModals}
              handleCardClick={handleCardClick}
              handleAddItemSubmit={handleAddItemSubmit}
+             handleEditUser={handleEditUser}
              isLoading={isLoading}
              currentUser={currentUser}
              handleLogout={handleLogout}
