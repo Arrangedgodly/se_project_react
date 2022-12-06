@@ -34,6 +34,7 @@
   margin-top: 40px;
   margin-right: 20px;
   margin-bottom: 36px;
+  font-weight: 700;
 }
 
 .header__profile {
@@ -42,6 +43,8 @@
   font-style: normal;
   text-decoration: none;
   color: #000;
+  font-weight: 700;
+  line-height: 25px;
 }
 
 .header__user {

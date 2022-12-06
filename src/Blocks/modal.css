@@ -42,6 +42,10 @@
   height: 304px;
 }
 
+.modal__container-register {
+  height: 456px;
+}
+
 .modal__close {
   background: url('../images/close.svg');
   width: 14px;

@@ -39,6 +39,10 @@
   margin-right: 11px;
 }
 
+.form__input-alt {
+  margin-bottom: 8px;
+}
+
 .form__label-radio {
   position: relative;
   margin-top: 8px;
