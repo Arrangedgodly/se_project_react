@@ -76,7 +76,8 @@ function App() {
   const handleRegisterUser = (name, avatar, email, password) => {
     setIsLoading(true);
     createUser(name, avatar, email, password)
-      .then(() => {
+      .then((res) => {
+        handleLogin(res.email, password);
         setIsLoggedIn(true);
         closeAllModals();
         setIsLoading(false);
