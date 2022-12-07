@@ -14,7 +14,7 @@ import { apiKey, parsedLocation, filterAPIData } from '../utils/constants';
 import { checkAuth, createUser, editUser, login } from '../utils/auth';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Routes, Route, Redirect } from 'react-router-dom';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 function App() {
@@ -175,7 +175,7 @@ function App() {
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
         />
-        <Switch>
+        <Routes>
           <Route exact path='/se_project_react/'>
             <Main
             weatherData={weatherData}
@@ -211,7 +211,7 @@ function App() {
              isLoggedIn={isLoggedIn}
             />
           </Route>
-        </Switch>
+        </Routes>
         <Footer />
         {activeModal === 'addition' && (
           <AddItemModal
