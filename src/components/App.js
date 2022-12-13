@@ -127,6 +127,7 @@ function App() {
         setCurrentUser({});
       }
     })
+    .catch(err => console.log(err));
   }
 
   React.useEffect(() => {
@@ -173,7 +174,6 @@ function App() {
             setActiveModal('login');
           }}
           isLoggedIn={isLoggedIn}
-          currentUser={currentUser}
         />
         <Switch>
           <Route exact path='/'>
@@ -182,7 +182,6 @@ function App() {
             cards={clothingItems}
             handleCardClick={handleCardClick}
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
             likeItem={likeItem}
             dislikeItem={dislikeItem}
             />
@@ -204,7 +203,6 @@ function App() {
              handleAddItemSubmit={handleAddItemSubmit}
              handleEditUser={handleEditUser}
              isLoading={isLoading}
-             currentUser={currentUser}
              handleLogout={handleLogout}
              likeItem={likeItem}
              dislikeItem={dislikeItem}

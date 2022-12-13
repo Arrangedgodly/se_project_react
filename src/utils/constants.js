@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const apiKey = "97ad3387a4f246eeac074450223011";
 const location = {
   latitude: "39.739235",
@@ -105,6 +107,16 @@ export function checkTime() {
   } else {
     return true;
   }
+}
+
+export function useForm(inputValues) {
+  const [values, setValues] = useState(inputValues);
+
+  const handleChange = (event) => {
+    const {value, name} = event.target;
+    setValues({...values, [name]: value});
+  };
+  return {values, handleChange, setValues};
 }
 
 export {

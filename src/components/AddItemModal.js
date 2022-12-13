@@ -1,10 +1,13 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
+import { useForm } from "../utils/constants";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
   const [name, setName] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
   const [weather, setWeather] = React.useState("");
+  
+  const {values, handleChange, setValues} = useForm({});
 
   const handleName = (e) => {
     setName(e.target.value);

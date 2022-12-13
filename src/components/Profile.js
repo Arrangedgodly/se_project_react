@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import AddItemModal from './AddItemModal';
 import EditProfileModal from './EditProfileModal';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Profile({ 
   isLoggedIn, 
@@ -17,7 +18,6 @@ function Profile({
   handleAddItemSubmit,
   handleEditUser, 
   isLoading, 
-  currentUser, 
   handleLogout, 
   likeItem, 
   dislikeItem }) {
@@ -25,7 +25,6 @@ function Profile({
     return (
         <div className="profile">
             <SideBar 
-            currentUser={currentUser}
             handleLogout={handleLogout}
             openEditModal={openEditModal}
             />
@@ -34,7 +33,6 @@ function Profile({
                 isLoggedIn={isLoggedIn}
                 clothingItems={clothingItems}
                 handleCardClick={handleCardClick}
-                currentUser={currentUser}
                 likeItem={likeItem}
                 dislikeItem={dislikeItem}
             />
@@ -49,7 +47,6 @@ function Profile({
             {isEditOpen && 
               <EditProfileModal 
                 isOpen={isEditOpen}
-                currentUser={currentUser}
                 handleEditUser={handleEditUser}
                 onCloseModal={onClose}
                 isLoading={isLoading}

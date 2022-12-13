@@ -1,7 +1,10 @@
 import '../blocks/sidebar.css';
-import avatarDefault from '../images/avatar.png';
+import React from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function SideBar({ currentUser, handleLogout, openEditModal }) {
+function SideBar({ handleLogout, openEditModal }) {
+    const currentUser = React.useContext(CurrentUserContext);
+    
     return (
         <div className='sidebar'>
           <div className='sidebar-wrapper'>

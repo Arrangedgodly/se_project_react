@@ -1,8 +1,11 @@
 import '../blocks/card.css';
 import React from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function ItemCard(props) {
-  const [isLiked, setIsLiked] = React.useState(props.item.likes.includes(props.currentUser._id));
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const [isLiked, setIsLiked] = React.useState(props.item.likes.includes(currentUser._id));
 
   const handleLike = () => {
     props.likeItem(props.item._id)

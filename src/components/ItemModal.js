@@ -1,20 +1,37 @@
-import '../blocks/itemModal.css';
-import '../blocks/modal.css';
+import "../blocks/itemModal.css";
+import "../blocks/modal.css";
+import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function ItemModal({card, onClose, handleDeleteModal, currentUser }) {
+function ItemModal({ card, onClose, handleDeleteModal }) {
+  const currentUser = React.useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser._id;
   return (
-      <div className='modal modal_type_preview'>
-      <div className='modal__container modal__container-alt'>
-        <button onClick={onClose}type='button' className='modal__close'></button>
-        <img src={card.imageUrl} alt={`Picture of ${card.name}`} className='modal__image' />
-        <h3 className='modal__title'>{card.name}</h3>
-        <p className='modal__desc'>Weather: {card.weather}</p>
+    <div className="modal modal_type_preview">
+      <div className="modal__container modal__container-alt">
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close"
+        ></button>
+        <img
+          src={card.imageUrl}
+          alt={`Picture of ${card.name}`}
+          className="modal__image"
+        />
+        <h3 className="modal__title">{card.name}</h3>
+        <p className="modal__desc">Weather: {card.weather}</p>
         {isOwn && (
-          <button type='button' className='modal__delete' onClick={handleDeleteModal}>Delete Item</button>
+          <button
+            type="button"
+            className="modal__delete"
+            onClick={handleDeleteModal}
+          >
+            Delete Item
+          </button>
         )}
       </div>
-    </div>   
+    </div>
   );
 }
 

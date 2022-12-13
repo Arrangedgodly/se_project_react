@@ -1,14 +1,16 @@
 import '../blocks/clothes.css';
 import ItemCard from './ItemCard';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import React from 'react';
 
 function ClothesSection({ 
   isLoggedIn, 
   openModal, 
   clothingItems, 
-  handleCardClick, 
-  currentUser, 
+  handleCardClick,
   likeItem, 
   dislikeItem }) {
+    const currentUser = React.useContext(CurrentUserContext);
     return (
         <div className='clothes'>
             <div className='clothes__header'>

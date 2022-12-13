@@ -3,10 +3,12 @@ import React from 'react';
 import headerLogo from '../images/logo.svg';
 import ToggleSwitch from './ToggleSwitch';
 import { Link } from 'react-router-dom';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLoggedIn, currentUser }) {
+function Header({weatherData, openModal, openRegisterModal, openLoginModal, isLoggedIn }) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const [isChecked, setIsChecked] = React.useState(false);
+  const currentUser = React.useContext(CurrentUserContext);
 
   const handleClick = () => {
     setIsChecked(!isChecked);

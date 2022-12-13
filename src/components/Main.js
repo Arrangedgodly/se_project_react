@@ -1,8 +1,9 @@
 import '../blocks/main.css';
 import '../blocks/cards.css';
-import {useContext} from 'react';
+import React from 'react';
 import WeatherCard from './WeatherCard';
 import ItemCard from './ItemCard';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CurrentTemperatureUnitContext } from '../contexts/CurrentTemperatureUnitContext';
 
 function filterCards(card, data) {
@@ -19,11 +20,11 @@ function Main({
   cards, 
   handleCardClick, 
   isLoggedIn, 
-  currentUser, 
   likeItem, 
   dislikeItem }) {
+  const currentUser = React.useContext(CurrentUserContext);
   const initialCards = cards.filter(item => filterCards(item, weatherData));
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
 
   return (
     <div className="main">
@@ -46,7 +47,6 @@ function Main({
               }}
               isLoggedIn={isLoggedIn}
               item={item}
-              currentUser={currentUser}
               likeItem={likeItem}
               dislikeItem={dislikeItem}
             />
