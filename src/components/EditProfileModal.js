@@ -1,25 +1,16 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useForm } from "../utils/constants";
 
 const EditProfileModal = ({ isOpen, handleEditUser, onCloseModal, isLoading }) => {
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [name, setName] = React.useState(currentUser.name);
-  const [avatar, setAvatar] = React.useState(currentUser.avatar);
-  
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  }
-
-  const handleAvatar = (e) => {
-    setAvatar(e.target.value);
-  }
+  const {values, handleChange, setValues} = useForm({});
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleEditUser(name, avatar);
+    handleEditUser(values.name, values.avatar);
   }
 
   return (
@@ -39,8 +30,8 @@ const EditProfileModal = ({ isOpen, handleEditUser, onCloseModal, isLoading }) =
         placeholder="Name"
         minLength="2"
         maxLength="30"
-        value={name}
-        onChange={handleName}
+        value={values.name || currentUser.name}
+        onChange={handleChange}
         required
       />
       <h4 className="form__label">Avatar</h4>
@@ -49,8 +40,8 @@ const EditProfileModal = ({ isOpen, handleEditUser, onCloseModal, isLoading }) =
         className="form__input form__input_type_avatar"
         type="url"
         placeholder="Avatar URL"
-        value={avatar}
-        onChange={handleAvatar}
+        value={values.avatar || currentUser.avatar}
+        onChange={handleChange}
         required
       />
     </ModalWithForm>

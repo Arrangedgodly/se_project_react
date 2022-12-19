@@ -1,21 +1,13 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
+import { useForm } from "../utils/constants";
 
 const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  }
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
-
+  const {values, handleChange, setValues} = useForm({});
+  
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin(email, password);
+    onLogin(values.email, values.password);
   }
 
   return (
@@ -33,8 +25,8 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
         className="form__input form__input_type_email"
         type="email"
         placeholder="Email"
-        value={email}
-        onChange={handleEmail}
+        value={values.email}
+        onChange={handleChange}
         required
       />
       <h4 className="form__label">Password</h4>
@@ -43,8 +35,8 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
         className="form__input form__input_type_password"
         type='text'
         placeholder='Password'
-        value={password}
-        onChange={handlePassword}
+        value={values.password}
+        onChange={handleChange}
         required
       />
     </ModalWithForm>

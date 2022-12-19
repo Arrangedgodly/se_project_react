@@ -3,27 +3,11 @@ import React from "react";
 import { useForm } from "../utils/constants";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
-  const [name, setName] = React.useState("");
-  const [imageUrl, setImageUrl] = React.useState("");
-  const [weather, setWeather] = React.useState("");
-  
   const {values, handleChange, setValues} = useForm({});
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  }
-
-  const handleUrl = (e) => {
-    setImageUrl(e.target.value);
-  }
-
-  const handleWeather = (e) => {
-    setWeather(e.target.value);
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(name, imageUrl, weather);
+    onAddItem(values.name, values.imageUrl, values.weather);
   }
 
   return (
@@ -43,8 +27,8 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
         placeholder="Name"
         minLength="1"
         maxLength="30"
-        value={name}
-        onChange={handleName}
+        value={values.name}
+        onChange={handleChange}
         required
       />
       <span className="form__error" id="name-error">
@@ -52,12 +36,12 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
       </span>
       <h4 className="form__label">Image</h4>
       <input
-        name="image"
+        name="imageUrl"
         className="form__input form__input_type_image"
         type="url"
         placeholder="Image URL"
-        value={imageUrl}
-        onChange={handleUrl}
+        value={values.imageUrl}
+        onChange={handleChange}
         required
       />
       <span className="form__error" id="image-error"></span>
@@ -65,31 +49,31 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
       <div className="form__radio">
         <label className="form__label-radio">
           <input
-            name="temp"
+            name="weather"
             className="form__input-radio"
             value="hot"
             type="radio"
-            onChange={handleWeather}
+            onChange={handleChange}
           />
           Hot
         </label>
         <label className="form__label-radio">
           <input
-            name="temp"
+            name="weather"
             className="form__input-radio"
             value="warm"
             type="radio"
-            onChange={handleWeather}
+            onChange={handleChange}
           />
           Warm
         </label>
         <label className="form__label-radio">
           <input
-            name="temp"
+            name="weather"
             className="form__input-radio"
             value="cold"
             type="radio"
-            onChange={handleWeather}
+            onChange={handleChange}
           />
           Cold
         </label>
