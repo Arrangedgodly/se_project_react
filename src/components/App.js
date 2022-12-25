@@ -130,6 +130,23 @@ function App() {
     .catch(err => console.log(err));
   }
 
+  const handleLikeClick = ({ cardId, isLiked, user }) => {
+    isLiked
+      ? dislikeItem(cardId)
+          .then(updatedCard => {
+            setClothingItems((cards) => {
+              cards.map((c) => (c._id === user.id ? updatedCard : c))
+            })
+          .catch(err => console.log(err))
+      })
+      : likeItem(cardId)
+        .then(updatedCard => {
+          setClothingItems((cards) => {
+            cards.map((c) => (c._id === user.id ? updatedCard : c))
+          })
+        })
+  };
+
   React.useEffect(() => {
     getWeatherInfo(apiKey, parsedLocation)
       .then(data => {
@@ -182,8 +199,7 @@ function App() {
             cards={clothingItems}
             handleCardClick={handleCardClick}
             isLoggedIn={isLoggedIn}
-            likeItem={likeItem}
-            dislikeItem={dislikeItem}
+            handleLikeClick={handleLikeClick}
             />
           </Route>
           <Route path='/profile'>

@@ -4,18 +4,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function ItemCard(props) {
   const currentUser = React.useContext(CurrentUserContext);
-
-  const [isLiked, setIsLiked] = React.useState(props.item.likes.includes(currentUser._id));
-
-  const handleLike = () => {
-    props.likeItem(props.item._id)
-      .then(setIsLiked(true));
-  }
-
-  const handleDislike = () => {
-    props.dislikeItem(props.item._id)
-      .then(setIsLiked(false));
-  }
+  const isLiked = props.item.likes.includes(currentUser._id);
 
   return (
     <li className='card' id={`${props.weather}`}>
@@ -25,7 +14,7 @@ function ItemCard(props) {
           <button 
             type='button' 
             className={isLiked ? 'card__like card__like-filled' : 'card__like'}
-            onClick={isLiked ? handleDislike : handleLike}
+            onClick={props.onCardLike}
             ></button>
         )}
       </div>

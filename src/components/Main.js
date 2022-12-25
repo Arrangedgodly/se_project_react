@@ -20,8 +20,7 @@ function Main({
   cards, 
   handleCardClick, 
   isLoggedIn, 
-  likeItem, 
-  dislikeItem }) {
+  handleLikeClick }) {
   const currentUser = React.useContext(CurrentUserContext);
   const initialCards = cards.filter(item => filterCards(item, weatherData));
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
@@ -47,8 +46,10 @@ function Main({
               }}
               isLoggedIn={isLoggedIn}
               item={item}
-              likeItem={likeItem}
-              dislikeItem={dislikeItem}
+              _id={item._id}
+              onCardLike={() => {
+                handleLikeClick(item._id, item.likes.includes(currentUser._id), currentUser)
+              }}
             />
           )
           )
