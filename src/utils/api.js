@@ -14,7 +14,7 @@ const getClothingItems = () => {
 }
 
 const removeClothingItem = (card) => {
-  return fetch(`${baseUrl}/items/${card.id}`, {
+  return fetch(`${baseUrl}/items/${card._id}`, {
     method: "DELETE",
     headers: {
       'Content-type': 'application/json; charset=UTF-8',

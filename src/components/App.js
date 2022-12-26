@@ -66,7 +66,7 @@ function App() {
     setIsLoading(true);
     removeClothingItem(card)
       .then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        fetchClothingItems();
         closeAllModals();
         setIsLoading(false);
       })
