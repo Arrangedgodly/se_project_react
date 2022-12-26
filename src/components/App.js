@@ -130,21 +130,14 @@ function App() {
     .catch(err => console.log(err));
   }
 
-  const handleLikeClick = ({ cardId, isLiked, user }) => {
+  const handleLikeClick = (cardId, isLiked, user) => {
     isLiked
       ? dislikeItem(cardId)
-          .then(updatedCard => {
-            setClothingItems((cards) => {
-              cards.map((c) => (c._id === user.id ? updatedCard : c))
-            })
+          .then(() => fetchClothingItems())
           .catch(err => console.log(err))
-      })
       : likeItem(cardId)
-        .then(updatedCard => {
-          setClothingItems((cards) => {
-            cards.map((c) => (c._id === user.id ? updatedCard : c))
-          })
-        })
+        .then(() => fetchClothingItems())
+        .catch(err => console.log(err))
   };
 
   React.useEffect(() => {
@@ -216,6 +209,7 @@ function App() {
              isEditOpen={activeModal === 'edit'}
              onClose={closeAllModals}
              handleCardClick={handleCardClick}
+             handleLikeClick={handleLikeClick}
              handleAddItemSubmit={handleAddItemSubmit}
              handleEditUser={handleEditUser}
              isLoading={isLoading}

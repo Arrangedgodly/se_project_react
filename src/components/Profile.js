@@ -14,7 +14,8 @@ function Profile({
   isOpen,
   isEditOpen,
   onClose, 
-  handleCardClick, 
+  handleCardClick,
+  handleLikeClick, 
   handleAddItemSubmit,
   handleEditUser, 
   isLoading, 
@@ -35,6 +36,7 @@ function Profile({
                 handleCardClick={handleCardClick}
                 likeItem={likeItem}
                 dislikeItem={dislikeItem}
+                handleLikeClick={handleLikeClick}
             />
             {isOpen && 
                 <AddItemModal 

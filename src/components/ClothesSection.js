@@ -9,7 +9,8 @@ function ClothesSection({
   clothingItems, 
   handleCardClick,
   likeItem, 
-  dislikeItem }) {
+  dislikeItem,
+  handleLikeClick }) {
     const currentUser = React.useContext(CurrentUserContext);
     return (
         <div className='clothes'>
@@ -32,6 +33,9 @@ function ClothesSection({
                     currentUser={currentUser}
                     likeItem={likeItem}
                     dislikeItem={dislikeItem}
+                    onCardLike={() => {
+                        handleLikeClick(item._id, item.likes.includes(currentUser._id), currentUser)
+                      }}
                     />
                 ))}
             </ul>
