@@ -1,31 +1,13 @@
 import ModalWithForm from "./ModalWithForm";
 import React from "react";
+import { useForm } from "../utils/constants";
 
 const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [avatar, setAvatar] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  }
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  }
-
-  const handleAvatar = (e) => {
-    setAvatar(e.target.value);
-  }
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
+  const {values, handleChange, setValues} = useForm({});
 
   function handleSubmit(e) {
     e.preventDefault();
-    onRegisterUser(name, avatar, email, password);
+    onRegisterUser(values.name, values.avatar, values.email, values.password);
   }
 
   return (
@@ -45,8 +27,8 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         placeholder="Name"
         minLength="2"
         maxLength="30"
-        value={name}
-        onChange={handleName}
+        value={values.name || ''}
+        onChange={handleChange}
         required
       />
       <h4 className="form__label">Email</h4>
@@ -55,8 +37,8 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         className="form__input form__input_type_email"
         type="email"
         placeholder="Email"
-        value={email}
-        onChange={handleEmail}
+        value={values.email || ''}
+        onChange={handleChange}
         required
       />
       <h4 className="form__label">Avatar</h4>
@@ -65,8 +47,8 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         className="form__input form__input_type_avatar"
         type="url"
         placeholder="Avatar URL"
-        value={avatar}
-        onChange={handleAvatar}
+        value={values.avatar || ''}
+        onChange={handleChange}
         required
       />
       <h4 className="form__label">Password</h4>
@@ -75,8 +57,8 @@ const RegisterModal = ({ isOpen, onRegisterUser, onCloseModal, isLoading }) => {
         className="form__input form__input-alt form__input_type_password"
         type='text'
         placeholder='Password'
-        value={password}
-        onChange={handlePassword}
+        value={values.password || ''}
+        onChange={handleChange}
         required
       />
     </ModalWithForm>

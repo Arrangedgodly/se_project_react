@@ -4,7 +4,6 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import AddItemModal from './AddItemModal';
 import EditProfileModal from './EditProfileModal';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Profile({ 
   isLoggedIn, 
