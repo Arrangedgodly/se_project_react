@@ -25,7 +25,7 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
         className="form__input form__input_type_email"
         type="email"
         placeholder="Email"
-        value={values.email}
+        value={values.email || ''}
         onChange={handleChange}
         required
       />
@@ -35,7 +35,7 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
         className="form__input form__input_type_password"
         type='text'
         placeholder='Password'
-        value={values.password}
+        value={values.password || ''}
         onChange={handleChange}
         required
       />

@@ -66,7 +66,7 @@ function App() {
     setIsLoading(true);
     removeClothingItem(card)
       .then(() => {
-        fetchClothingItems();
+        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         closeAllModals();
         setIsLoading(false);
       })
@@ -133,10 +133,18 @@ function App() {
   const handleLikeClick = (cardId, isLiked, user) => {
     isLiked
       ? dislikeItem(cardId)
-          .then(() => fetchClothingItems())
+          .then(updatedCard => {
+            setClothingItems(cards => {
+              cards.map(c => (c._id === user._id ? updatedCard : c))
+            })
+          })
           .catch(err => console.log(err))
       : likeItem(cardId)
-        .then(() => fetchClothingItems())
+        .then(updatedCard => {
+          setClothingItems(cards => {
+            cards.map(c => (c._id === user._id ? updatedCard : c))
+          })
+        })
         .catch(err => console.log(err))
   };
 

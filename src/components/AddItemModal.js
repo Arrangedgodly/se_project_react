@@ -27,7 +27,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
         placeholder="Name"
         minLength="1"
         maxLength="30"
-        value={values.name}
+        value={values.name || ''}
         onChange={handleChange}
         required
       />
@@ -40,7 +40,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
         className="form__input form__input_type_image"
         type="url"
         placeholder="Image URL"
-        value={values.imageUrl}
+        value={values.imageUrl || ''}
         onChange={handleChange}
         required
       />
