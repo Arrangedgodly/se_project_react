@@ -130,21 +130,19 @@ function App() {
     .catch(err => console.log(err));
   }
 
-  const handleLikeClick = (cardId, isLiked, user) => {
+  const handleLikeClick = (cardId, isLiked) => {
     isLiked
       ? dislikeItem(cardId)
-          .then(updatedCard => {
-            setClothingItems((cards) => {
-              cards.map((c) => (c._id === cardId ? updatedCard : c))
-            })
-          })
+          .then(updatedCard =>
+            setClothingItems(clothingItems =>
+              clothingItems.map((c) => (c._id === cardId ? updatedCard : c))
+            ))
           .catch(err => console.log(err))
       : likeItem(cardId)
-        .then(updatedCard => {
-          setClothingItems((cards) => {
-            cards.map((c) => (c._id === cardId ? updatedCard : c))
-          })
-        })
+        .then(updatedCard =>
+          setClothingItems(clothingItems =>
+            clothingItems.map((c) => (c._id === cardId ? updatedCard : c))
+          ))
         .catch(err => console.log(err))
   };
 
