@@ -1,5 +1,5 @@
 const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://api.graydonwasil.students.nomoredomainssbs.ru/'
+  ? 'https://api.graydonwasil.students.nomoredomainssbs.ru'
   : 'http://localhost:3001'; 
 
 function checkResponse(res) {
