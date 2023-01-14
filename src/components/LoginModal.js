@@ -33,7 +33,7 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, isLoading }) => {
       <input
         name="password"
         className="form__input form__input_type_password"
-        type='text'
+        type='password'
         placeholder='Password'
         value={values.password || ''}
         onChange={handleChange}
