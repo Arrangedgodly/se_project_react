@@ -1,4 +1,6 @@
-const baseUrl = 'http://localhost:3001';
+const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://api.graydonwasil.students.nomoredomainssbs.ru/'
+  : 'http://localhost:3001'; 
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
