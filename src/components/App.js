@@ -106,7 +106,10 @@ function App() {
         closeAllModals();
         setIsLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
+      });
   }
 
   const handleLogout = () => {
